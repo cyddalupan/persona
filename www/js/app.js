@@ -1,4 +1,13 @@
-var app = angular.module('myApp',['ngCookies','ngFileUpload']);
+var app = angular.module('myApp',['ngCookies','ngFileUpload','ngRoute']);
+
+// configure our routes
+app.config(function($routeProvider) {
+	$routeProvider
+		.when('/mobile', {
+			templateUrl : 'pages/mobile-page.html',
+			controller  : 'mobileController'
+		});
+});
 
 /**
  * SiteController
@@ -19,7 +28,7 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 	########################################################################
 	########################################################################
 	*/
-	$scope.s_url = 'http://haynaku.ph/';
+	$scope.s_url = 'http://cydd.website/haynaku_api/public/';
 	$scope.usersFavoriteProducts = [];
 	$scope.welcome_user = '';
 	$scope.my_favorites = [];
