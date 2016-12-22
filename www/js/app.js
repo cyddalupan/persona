@@ -135,9 +135,9 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 			alert("Please check connection and try again.");
 		});
 
-		$timeout(function(){
-			$scope.testlogin();
-		},90000);
+		// $timeout(function(){
+		// 	$scope.testlogin();
+		// },90000);
 	}	
 	$scope.testlogin();
 
@@ -957,7 +957,7 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
         $scope.errFiles = errFiles;
         angular.forEach(files, function(file) {
             file.upload = Upload.upload({
-                url: 'upload_ad_gallery/'+$scope.unfinishedAdId,
+                url: $scope.s_url+'upload_ad_gallery/'+$scope.unfinishedAdId,
                 data: {file: file}
             });
 
@@ -1248,6 +1248,9 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 	*/	
 
 	//Watch new pages
+	$scope.$watch('unfinishedAdId', function(newVal, oldVal){
+		console.log(newVal);
+	});
 	$scope.$watch('splitroute', function(newVal, oldVal){
 		//ON PAGE LOADS
 		$scope.activePage = $scope.splitroute[1];
