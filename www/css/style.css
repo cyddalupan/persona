@@ -17,6 +17,13 @@ a{
     background-size: cover;
 } */
 
+.banner-logo{
+    width: 40px;
+    float: left;
+    margin-top: 6px;
+
+}
+
 .color_back {
 	background-color: black;
 	border: black;

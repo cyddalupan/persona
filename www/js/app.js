@@ -1,13 +1,4 @@
-var app = angular.module('myApp',['ngCookies','ngFileUpload','ngRoute']);
-
-// configure our routes
-app.config(function($routeProvider) {
-	$routeProvider
-		.when('/mobile', {
-			templateUrl : 'pages/mobile-page.html',
-			controller  : 'mobileController'
-		});
-});
+var app = angular.module('myApp',['ngCookies','ngFileUpload']);
 
 /**
  * SiteController
@@ -15,11 +6,11 @@ app.config(function($routeProvider) {
  * add here
  */
 
- app.config(['$httpProvider', function($httpProvider) {
-        $httpProvider.defaults.useXDomain = true;
-        delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    }
-]);
+// app.config(['$httpProvider', function($httpProvider) {
+//         $httpProvider.defaults.useXDomain = true;
+//         delete $httpProvider.defaults.headers.common['X-Requested-With'];
+//     }
+// ]);
 
 app.controller('SiteController', ['$scope','$http','$location','$cookies','$window', '$anchorScroll', 'Upload', '$timeout','$sce', function($scope,$http,$location,$cookies,$window,$anchorScroll,Upload,$timeout,$sce) {
 
@@ -28,7 +19,7 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 	########################################################################
 	########################################################################
 	*/
-	$scope.s_url = 'http://cydd.website/haynaku_api/public/';
+	$scope.s_url = 'http://haynaku.ph/';
 	$scope.usersFavoriteProducts = [];
 	$scope.welcome_user = '';
 	$scope.my_favorites = [];
@@ -712,6 +703,7 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 		}
 
 		if (valid) {
+			console.log($scope.formData);
 			$http({
 			method: 'POST',
 			url: $scope.s_url+'register',
@@ -720,6 +712,7 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 			}
 			}).then(function successCallback(response) {
 				if(response.data == "added"){
+					alert('Registration Success!');
 					$scope.redirect('login');
 				}else{
 					alert(response.data);
@@ -1309,15 +1302,15 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 }]);
 
 app.directive('toNumber', function() {
-  return {
-    require: 'ngModel',
-    link: function(scope, element, attrs, ngModel) {
-      ngModel.$parsers.push(function(val) {
-        return parseInt(val, 10);
-      });
-      ngModel.$formatters.push(function(val) {
-        return '' + val;
-      });
-    }
-  }
+	return {
+		require: 'ngModel',
+		link: function(scope, element, attrs, ngModel) {
+			ngModel.$parsers.push(function(val) {
+				return parseInt(val, 10);
+			});
+			ngModel.$formatters.push(function(val) {
+				return '' + val;
+			});
+		}
+	}
 })
