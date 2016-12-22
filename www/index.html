@@ -69,24 +69,6 @@
     <![endif]-->
 </head>
 <body id="background_image" ng-controller="SiteController">
-        <script>
-          window.fbAsyncInit = function() {
-            FB.init({
-              appId      : '301742933521624',
-              xfbml      : true,
-              version    : 'v2.7'
-            });
-          };
-
-          (function(d, s, id){
-             var js, fjs = d.getElementsByTagName(s)[0];
-             if (d.getElementById(id)) {return;}
-             js = d.createElement(s); js.id = id;
-             js.src = "//connect.facebook.net/en_US/sdk.js";
-             fjs.parentNode.insertBefore(js, fjs);
-           }(document, 'script', 'facebook-jssdk'));
-        </script>
-
         <div class="app navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -105,7 +87,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a ng-click="redirect('mobile')"><i class="fa fa-mobile"></i> Mobile Apps</a>
+                        <li ng-show="mobile_page_show"><a ng-click="redirect('mobile')"><i class="fa fa-mobile"></i> Mobile Apps</a>
                         </li>
                         <li><a ng-click="redirect('contactus')"><i class="fa fa-phone"></i> Contact us</a>
                         </li>
@@ -120,17 +102,6 @@
                             </a>
                         </li>
                     </ul>
-                    <br>
-                    <div
-                      class="fb-like"
-                      style="position:fixed; right:15px; top:15px;"
-                      data-layout="button"
-                      data-action="like"
-                      data-share="true"
-                      data-width="50"
-                      data-size="small"
-                      data-show-faces="false">
-                    </div>
                     
                 </div>
             </div>

@@ -42,6 +42,7 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 	$scope.is_search = 0;
 	$scope.ads_type_id = 0;
 	$scope.selected_sidebar_sub_category = 0;
+	$scope.mobile_page_show = 1;
 
 	/*AUTO LOADS
 	########################################################################
@@ -139,6 +140,14 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 		},90000);
 	}	
 	$scope.testlogin();
+
+
+	/**
+	 */
+	device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
+	if(device == true){
+		$scope.mobile_page_show = 0;
+	}
 
 	/*LISTENERS
 	########################################################################
