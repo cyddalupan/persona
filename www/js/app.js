@@ -124,11 +124,11 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 				$cookies.remove("unfinishedAdId");
 				$scope.unfinishedAdId = 0;
 
-				if($scope.activePage == 'my_ads')
-				{
-					alert('Please Login');
-					$scope.redirect('login');					
-				}
+				// if($scope.activePage == 'my_ads')
+				// {
+				// 	alert('Please Login');
+				// 	$scope.redirect('login');					
+				// }
 			}
 		}, function errorCallback(response) {
 			console.log(response);
