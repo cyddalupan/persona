@@ -19,7 +19,7 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 	########################################################################
 	########################################################################
 	*/
-	$scope.s_url = 'http://localhost/persona_api/public/';//http://haynaku.ph/
+	$scope.s_url = 'http://haynaku.ph/';//http://localhost/persona_api/public/
 	$scope.usersFavoriteProducts = [];
 	$scope.welcome_user = '';
 	$scope.my_favorites = [];
