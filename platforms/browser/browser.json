@@ -4,8 +4,152 @@
         "uninstalled": []
     },
     "config_munge": {
-        "files": {}
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"browser-package\" value=\"Device\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
     },
-    "installed_plugins": {},
-    "dependent_plugins": {}
+    "installed_plugins": {
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "ph.haynaku"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "ph.haynaku"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "ph.haynaku"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "ph.haynaku"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "ph.haynaku"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "ph.haynaku"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/cordova-plugin-vibration/www/vibration.js",
+            "id": "cordova-plugin-vibration.notification",
+            "pluginId": "cordova-plugin-vibration",
+            "merges": [
+                "navigator.notification",
+                "navigator"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-vibration/src/browser/Vibration.js",
+            "id": "cordova-plugin-vibration.Vibration",
+            "pluginId": "cordova-plugin-vibration",
+            "merges": [
+                "navigator.notification",
+                "navigator"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-globalization/www/GlobalizationError.js",
+            "id": "cordova-plugin-globalization.GlobalizationError",
+            "pluginId": "cordova-plugin-globalization",
+            "clobbers": [
+                "window.GlobalizationError"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-globalization/www/globalization.js",
+            "id": "cordova-plugin-globalization.globalization",
+            "pluginId": "cordova-plugin-globalization",
+            "clobbers": [
+                "navigator.globalization"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-globalization/www/browser/moment.js",
+            "id": "cordova-plugin-globalization.moment",
+            "pluginId": "cordova-plugin-globalization",
+            "runs": true
+        },
+        {
+            "file": "plugins/cordova-plugin-globalization/src/browser/GlobalizationProxy.js",
+            "id": "cordova-plugin-globalization.GlobalizationProxy",
+            "pluginId": "cordova-plugin-globalization",
+            "runs": true
+        },
+        {
+            "file": "plugins/cordova-plugin-device-orientation/www/CompassError.js",
+            "id": "cordova-plugin-device-orientation.CompassError",
+            "pluginId": "cordova-plugin-device-orientation",
+            "clobbers": [
+                "CompassError"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device-orientation/www/CompassHeading.js",
+            "id": "cordova-plugin-device-orientation.CompassHeading",
+            "pluginId": "cordova-plugin-device-orientation",
+            "clobbers": [
+                "CompassHeading"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device-orientation/www/compass.js",
+            "id": "cordova-plugin-device-orientation.compass",
+            "pluginId": "cordova-plugin-device-orientation",
+            "clobbers": [
+                "navigator.compass"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device-orientation/src/browser/CompassProxy.js",
+            "id": "cordova-plugin-device-orientation.CompassProxy",
+            "pluginId": "cordova-plugin-device-orientation",
+            "runs": true
+        },
+        {
+            "file": "plugins/cordova-plugin-device-motion/www/Acceleration.js",
+            "id": "cordova-plugin-device-motion.Acceleration",
+            "pluginId": "cordova-plugin-device-motion",
+            "clobbers": [
+                "Acceleration"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device-motion/www/accelerometer.js",
+            "id": "cordova-plugin-device-motion.accelerometer",
+            "pluginId": "cordova-plugin-device-motion",
+            "clobbers": [
+                "navigator.accelerometer"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device-motion/src/browser/AccelerometerProxy.js",
+            "id": "cordova-plugin-device-motion.AccelerometerProxy",
+            "pluginId": "cordova-plugin-device-motion",
+            "runs": true
+        },
+        {
+            "file": "plugins/cordova-plugin-device/www/device.js",
+            "id": "cordova-plugin-device.device",
+            "pluginId": "cordova-plugin-device",
+            "clobbers": [
+                "device"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device/src/browser/DeviceProxy.js",
+            "id": "cordova-plugin-device.DeviceProxy",
+            "pluginId": "cordova-plugin-device",
+            "runs": true
+        }
+    ]
 }

@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="ph.haynaku" version="1.1.1">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="ph.haynaku" version="1.2.0">
   <name>Haynaku</name>
   <description>This App is free classified ads</description>
   <author href="http://cydd.website" email="cydmdalupan@gmail.com">Cyd Dalupan</author>
@@ -7,7 +7,12 @@
   <preference name="android-minSdkVersion" value="14"/>
   <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1"/>
   <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1"/>
-  <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0"/>
+  <plugin name="cordova-plugin-media-capture" source="npm" spec="*">
+    <variable name="CAMERA_USAGE_DESCRIPTION" value="App would like to access the camera." />
+    <variable name="MICROPHONE_USAGE_DESCRIPTION" value="App would like to access the microphone." />
+    <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
+  </plugin>
+
   <plugin name="cordova-plugin-console" source="npm" spec="~1.0.2"/>
   <plugin name="cordova-plugin-contacts" source="npm" spec="~2.0.1"/>
   <plugin name="cordova-plugin-device" source="npm" spec="~1.1.1"/>

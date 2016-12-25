@@ -1,0 +1,30 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "ph.haynaku"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "ph.haynaku"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "ph.haynaku"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "ph.haynaku"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "ph.haynaku"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "ph.haynaku"
+        }
+    },
+    "dependent_plugins": {}
+}

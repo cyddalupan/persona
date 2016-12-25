@@ -19,7 +19,7 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 	########################################################################
 	########################################################################
 	*/
-	$scope.s_url = 'http://haynaku.ph/';
+	$scope.s_url = 'http://localhost/persona_api/public/';//http://haynaku.ph/
 	$scope.usersFavoriteProducts = [];
 	$scope.welcome_user = '';
 	$scope.my_favorites = [];
@@ -43,195 +43,6 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 	$scope.ads_type_id = 0;
 	$scope.selected_sidebar_sub_category = 0;
 	$scope.mobile_page_show = 1;
-
-	/*AUTO LOADS
-	########################################################################
-	########################################################################
-	########################################################################
-	*/
-
-	/**
-	 * Check for Cookies
-	 * if theres a ad that has being edited.
-	 * and not yes finished. So the User Can continue
-	 * even If the Page Refresh
-	 */
-	if(angular.isUndefined($cookies.get("unfinishedAdId"))){
-		$scope.unfinishedAdId = "";
-	}else{
-		$scope.unfinishedAdId = $cookies.get("unfinishedAdId");
-	}
-
-	/**
-	 * If The Settings is not Yet On the Cookie
-	 * Get Settings from API, And Save to cookie
-	 */
-	if(angular.isUndefined($cookies.get("settings"))){
-		console.log('Settings Added');
-		$http({
-			method: 'GET',
-			url: $scope.s_url+'get-settings'
-		}).then(function successCallback(response) {
-			$cookies.putObject("settings",response.data);
-			$scope.settings = $cookies.getObject("settings");
-		}, function errorCallback(response) {
-			console.log(response);
-			alert("Please check connection and try again.");
-		});
-	}else{
-		$scope.settings = $cookies.getObject("settings");
-	}
-
-
-	/**
-	 * Check Cookies if user is loged in, If no cookie, means not log in.
-	 * send Zero value to user_id, Than means not logged.
-	 */
-	if(angular.isUndefined($cookies.get("user_id"))){
-		$scope.user_id = 0;
-	}else{
-		$scope.user_id = $cookies.get("user_id");
-	}
-
-	/**
-	 * On Load, Gets The Url Variable.
-	 * to find out what page should be shown.
-	 * if no page is set on url, Direct to category page, it is the home page.
-	 * If not, split the URL to page name, and id variable, if there is.
-	 */
-	if($location.path() === ''){
-		$scope.activePage = 'category';
-		$scope.splitroute = ['','category',''];
-	}else{
-		$scope.splitroute = $location.path().split("/");
-		$scope.activePage = $scope.splitroute[1];
-		$scope.activePageId = $scope.splitroute[2];
-	}
-
-	/**
-	 * Test user login every * seconds
-	 * to make sure the session on the server still exists
-	 */
-	$scope.testlogin = function(){
-		$http({
-			method: 'GET',
-			url: $scope.s_url+'check_login'
-		}).then(function successCallback(response) {
-			if(response.data == 0)
-			{
-				$cookies.remove("user_id");
-				$scope.user_id = 0;
-				$cookies.remove("unfinishedAdId");
-				$scope.unfinishedAdId = 0;
-
-				// if($scope.activePage == 'my_ads')
-				// {
-				// 	alert('Please Login');
-				// 	$scope.redirect('login');					
-				// }
-			}
-		}, function errorCallback(response) {
-			console.log(response);
-			alert("Please check connection and try again.");
-		});
-
-		// $timeout(function(){
-		// 	$scope.testlogin();
-		// },90000);
-	}	
-	$scope.testlogin();
-
-
-	/**
-	 */
-	device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
-	if(device == true){
-		$scope.mobile_page_show = 0;
-	}
-
-	/*LISTENERS
-	########################################################################
-	########################################################################
-	########################################################################
-	*/
-
-	/**
-	 * Listen when variable adsSingle change
-	 * So the Input Variables will change
-	 * When Editin or adding new ad
-	 */
-	$scope.$watch('adsSingle', function(newVal, oldVal){
-		if(!angular.isUndefined(newVal) && newVal !== '' && newVal !== 0){
-			$cookies.put('unfinishedAdId',newVal.id);
-			$scope.title = newVal.title;
-			$scope.location = parseInt(newVal.location_id);
-			$scope.category = parseInt(newVal.category_id);
-			$scope.get_sub_category(newVal.category_id);
-			$scope.ads_type = newVal.ads_type;
-			$scope.price = newVal.price;
-			$scope.description = newVal.description;
-			$scope.featured_gallery = newVal.featured_image;
-			$scope.get_gallery(newVal.id);
-			$scope.files = files = "";
-			$scope.errFiles = errFiles = "";
-			if (!$scope.$$phase) {
-				$scope.$apply();
-			}
-		}
-		else if(angular.isUndefined(newVal) ){
-			$scope.title = "";
-			$scope.category = 0;
-			$scope.subcategory = 0;
-			$scope.price = "";
-			$scope.description = "";
-			$scope.featured_gallery = "";
-			$scope.files = files = "";
-       		$scope.errFiles = errFiles = "";
-		}
-	});
-
-	/**
-	 * This is Used with edit ad page.
-	 * when user chose what ad to edit,
-	 * and adsSingle watch will update the input.
-	 * but the sub_category option will not be updated because
-	 * we dont know what the category is. so we load the category first
-	 * then the category will update sub_categories. and this function will listen to that.
-	 * and when the set of sub_categories is selected, 
-	 * we chose what the sub_category the user selected.
-	 */
-	$scope.$watch('sub_categories', function(newVal, oldVal){
-		if(!angular.isUndefined($scope.adsSingle))
-		{
-			$scope.subcategory = parseInt($scope.adsSingle.sub_category_id);	
-		}
-	});
-
-	/**
-	 * Updates the ads type on edit ads page (new_ad)
-	 *
-	 * when ads is edited, it waits for the loading of ads
-	 * then wait for category_id to load.
-	 * then wait for the ads_types to be updated
-	 * then select what ads in database
-	 */
-	$scope.$watch('ads_types', function(newVal, oldVal){
-		if(!angular.isUndefined($scope.adsSingle))
-		{
-			$scope.ads_type = parseInt($scope.adsSingle.ads_type_id);	
-		}
-	});
-
-	/**
-	 * when currentCategoryId is change,
-	 * change the available ads type
-	 */
-	$scope.$watch('currentCategoryId', function(newVal, oldVal){
-		if(newVal !== 0)
-		{
-			$scope.get_ads_type(newVal);	
-		}
-	});
 
 	/*METHODS
 	########################################################################
@@ -491,9 +302,20 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 	$scope.addFavorites = function(product_id){
 		$http({
 			method: 'POST',
-			url: $scope.s_url+'add-favorites/'+product_id+'/'+$scope.user_id
-		}).then(function successCallback() {
-			$scope.usersFavoriteProducts.push(product_id);
+			url: $scope.s_url+'add-favorites/'+product_id+'/'+$scope.user_id,
+			data:{
+				'user_id'	: $cookies.get("user_id"),
+				'token'		: $cookies.get("token")
+			}
+		}).then(function successCallback(response) {
+			if(response.data == 'logout'){
+				alert("Session Expired Please Login Again.")
+				$scope.logout();
+			}
+			if(response.data == 'success')
+			{
+				$scope.usersFavoriteProducts.push(product_id);
+			}
 		}, function errorCallback(response) {
 			console.log(response);
 			alert("Please check connection and try again.");
@@ -507,8 +329,16 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 	$scope.RemoveFavorites = function(product_id){
 		$http({
 			method: 'POST',
-			url: $scope.s_url+'remove-favorites/'+product_id+'/'+$scope.user_id
-		}).then(function successCallback() {
+			url: $scope.s_url+'remove-favorites/'+product_id+'/'+$scope.user_id,
+			data:{
+				'user_id'	: $cookies.get("user_id"),
+				'token'		: $cookies.get("token")
+			}
+		}).then(function successCallback(response) {
+			if(response.data == 'logout'){
+				alert("Session Expired Please Login Again.")
+				$scope.logout();
+			}
 			var index = $scope.usersFavoriteProducts.indexOf(product_id);
 			if (index > -1) {
 			    $scope.usersFavoriteProducts.splice(index, 1);
@@ -559,7 +389,7 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 			method: 'GET',
 			url: $scope.s_url+'get_comments/'+ads_id
 		}).then(function successCallback(response) {
-			$scope.Comments = response.data;			
+			$scope.Comments = response.data;
 		}, function errorCallback(response) {
 			console.log(response);
 			alert("Please check connection and try again.");
@@ -570,7 +400,7 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 	 * check if user is logged
 	 */
 	$scope.checklogin = function(pageName){
-		if($scope.user_id === 0){
+		if(angular.isUndefined($cookies.get("user_id"))){
 			$scope.activePage = 'login';
 		}else{
 			$location.path(pageName+"/");
@@ -632,22 +462,15 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 	 * Removes id to cookies
 	 */
 	$scope.logout = function(){
-		$http({
-			method: 'POST',
-			url: $scope.s_url+'logout'
-		}).then(function successCallback(response) {	
-			$cookies.remove("user_id");
-			$scope.user_id = 0;
-			$cookies.remove("unfinishedAdId");
-			$scope.unfinishedAdId = 0;
-			$scope.redirect('category');
-			$timeout(function () {
-				location.reload();
-            },1000);
-		}, function errorCallback(response) {
-			console.log(response);
-			alert("Please check connection and try again.");
-		});
+		$cookies.remove("user_id");
+		$scope.user_id = 0;
+		$cookies.remove("unfinishedAdId");
+		$cookies.remove("token");
+		$scope.unfinishedAdId = 0;
+		$scope.redirect('category');
+		$timeout(function () {
+			location.reload();
+        },1000);
 	}
 
 	/**
@@ -753,6 +576,7 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 			alert(response.data.message);
 			if(response.data.user_id != 0){
 				$cookies.put("user_id", response.data.user_id);
+				$cookies.put("token", response.data.token);
 				$scope.redirect('my_ads');
 				$scope.user_id = response.data.user_id;
 				$scope.welcome_user = response.data.message;
@@ -792,12 +616,22 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 		method: 'POST',
 		url: $scope.s_url+'comment',
 		data: {
-			'ads_id' : ads_id,
-			'user_id' : $scope.user_id,
-			'comment' : this.comment
+			'ads_id' 	: ads_id,
+			'user_id' 	: $scope.user_id,
+			'comment' 	: this.comment,
+			'user_id'	: $cookies.get("user_id"),
+			'token'		: $cookies.get("token")
 		}
 		}).then(function successCallback(response) {
+			if(response.data == 'logout'){
+				alert("Session Expired Please Login Again.")
+				$scope.logout();
+			}
 			$scope.updateComment(ads_id);
+			
+			//move to errors
+			$("html, body").animate({ scrollTop: $(document).height()  }, 1000);
+
 		}, function errorCallback(response) {
 			console.log(response);
 			alert("Please check connection and try again.");
@@ -823,22 +657,62 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 	$scope.add_new_product = function(user_id){
 		$http({
 		method: 'POST',
-		url: $scope.s_url+'new_blank_ad/'+$scope.user_id
+		url: $scope.s_url+'new_blank_ad/'+$scope.user_id,
+		data:{
+			'user_id'	: $cookies.get("user_id"),
+			'token'		: $cookies.get("token")
+		}
 		}).then(function successCallback(response) {
+			if(response.data == 'logout'){
+				alert("Session Expired Please Login Again.")
+				$scope.logout();
+			}
 			//if return is not number return 0
 			if(isNaN(response.data))
 			{
 				response.data = 0;
 			}
-			if($scope.unfinishedAdId == 0){
-				$cookies.put('unfinishedAdId',response.data);
-				$scope.unfinishedAdId = response.data;
-			}
+			$cookies.put('unfinishedAdId',response.data);
+			$scope.unfinishedAdId = response.data;
+		
 			$scope.selectAds($scope.unfinishedAdId);
+			$scope.featured_gallery.path = '';
 		}, function errorCallback(response) {
 			console.log(response);
 			alert("Please check connection and try again.");
 		});
+	}
+
+	/**
+	 * Delete the Ad you poster
+	 * send confirmation before delete
+	 */
+	$scope.delete_ad = function(ads_id){
+		if(!confirm('Are you sure you want to Delete?'))
+		{
+			return false;
+		}
+		else
+		{
+			$http({
+			method: 'POST',
+			url: $scope.s_url+'delete_ad/'+ads_id,
+			data:{
+				'user_id'	: $cookies.get("user_id"),
+				'token'		: $cookies.get("token")
+			}
+			}).then(function successCallback(response) {
+				if(response.data == 'logout'){
+					alert("Session Expired Please Login Again.")
+					$scope.logout();
+				}
+
+				$scope.getMyAds();
+			}, function errorCallback(response) {
+				console.log(response);
+				alert("Please check connection and try again.");
+			});
+		}
 	}
 
 	/**
@@ -882,6 +756,8 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 		method: 'POST',
 		url: $scope.s_url+'store_ad/'+$scope.unfinishedAdId,
 		data: {
+			'user_id'		: $cookies.get("user_id"),
+			'token'			: $cookies.get("token"),
 			'title' 		: this.title,
 			'location' 		: this.location,
 			'category' 		: this.category,
@@ -894,7 +770,7 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 
 			//check login
 			if(response.data == 'logout'){
-				alert("Session Expired Pleas Login Again.")
+				alert("Session Expired Please Login Again.")
 				$scope.logout();
 			}
 
@@ -958,7 +834,11 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
         angular.forEach(files, function(file) {
             file.upload = Upload.upload({
                 url: $scope.s_url+'upload_ad_gallery/'+$scope.unfinishedAdId,
-                data: {file: file}
+                data: {
+					'user_id'	: $cookies.get("user_id"),
+					'token'		: $cookies.get("token"),
+					'file'		: file
+				}
             });
 
             file.upload.then(function (response) {
@@ -1011,8 +891,16 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
     $scope.set_featured_image = function(ad_id,gallery_id){
     	$http({
 		method: 'POST',
-		url: $scope.s_url+'set_featured_image/'+ad_id+"/"+gallery_id
+		url: $scope.s_url+'set_featured_image/'+ad_id+"/"+gallery_id,
+		data:{
+			'user_id'	: $cookies.get("user_id"),
+			'token'		: $cookies.get("token")
+		}
 		}).then(function successCallback(response) {
+			if(response.data == 'logout'){
+				alert("Session Expired Please Login Again.")
+				$scope.logout();
+			}
 			$scope.get_gallery_single(gallery_id);
 		}, function errorCallback(response) {
 			console.log(response);
@@ -1026,8 +914,16 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
     $scope.remove_gallery = function(gallery_id){
     	$http({
 		method: 'POST',
-		url: $scope.s_url+'remove_gallery/'+gallery_id
+		url: $scope.s_url+'remove_gallery/'+gallery_id,
+		data:{
+			'user_id'	: $cookies.get("user_id"),
+			'token'		: $cookies.get("token")
+		}
 		}).then(function successCallback(response) {
+			if(response.data == 'logout'){
+				alert("Session Expired Please Login Again.")
+				$scope.logout();
+			}
 			$scope.get_gallery($scope.unfinishedAdId);
 		}, function errorCallback(response) {
 			console.log(response);
@@ -1311,7 +1207,164 @@ app.controller('SiteController', ['$scope','$http','$location','$cookies','$wind
 
 	});
 
-}]);
+	/*AUTO LOADS
+	########################################################################
+	########################################################################
+	########################################################################
+	*/
+
+	/**
+	 * Check for Cookies
+	 * if theres a ad that has being edited.
+	 * and not yes finished. So the User Can continue
+	 * even If the Page Refresh
+	 */
+	if(angular.isUndefined($cookies.get("unfinishedAdId"))){
+		$scope.unfinishedAdId = "";
+	}else{
+		$scope.unfinishedAdId = $cookies.get("unfinishedAdId");
+	}
+
+	/**
+	 * If The Settings is not Yet On the Cookie
+	 * Get Settings from API, And Save to cookie
+	 */
+	if(angular.isUndefined($cookies.get("settings"))){
+		console.log('Settings Added');
+		$http({
+			method: 'GET',
+			url: $scope.s_url+'get-settings'
+		}).then(function successCallback(response) {
+			$cookies.putObject("settings",response.data);
+			$scope.settings = $cookies.getObject("settings");
+		}, function errorCallback(response) {
+			console.log(response);
+			alert("Please check connection and try again.");
+		});
+	}else{
+		$scope.settings = $cookies.getObject("settings");
+	}
+
+
+	/**
+	 * Check Cookies if user is loged in, If no cookie, means not log in.
+	 * send Zero value to user_id, Than means not logged.
+	 */
+	if(angular.isUndefined($cookies.get("user_id"))){
+		$scope.user_id = 0;
+	}else{
+		$scope.user_id = $cookies.get("user_id");
+		//get favorites
+		$scope.getUserFavorites($scope.user_id);
+	}
+
+	/**
+	 * On Load, Gets The Url Variable.
+	 * to find out what page should be shown.
+	 * if no page is set on url, Direct to category page, it is the home page.
+	 * If not, split the URL to page name, and id variable, if there is.
+	 */
+	if($location.path() === ''){
+		$scope.activePage = 'category';
+		$scope.splitroute = ['','category',''];
+	}else{
+		$scope.splitroute = $location.path().split("/");
+		$scope.activePage = $scope.splitroute[1];
+		$scope.activePageId = $scope.splitroute[2];
+	}
+
+	/**
+	 */
+	device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
+	if(device == true){
+		$scope.mobile_page_show = 0;
+	}
+
+	/*LISTENERS
+	########################################################################
+	########################################################################
+	########################################################################
+	*/
+
+	/**
+	 * Listen when variable adsSingle change
+	 * So the Input Variables will change
+	 * When Editin or adding new ad
+	 */
+	$scope.$watch('adsSingle', function(newVal, oldVal){
+		if(!angular.isUndefined(newVal) && newVal !== '' && newVal !== 0){
+			$cookies.put('unfinishedAdId',newVal.id);
+			$scope.title = newVal.title;
+			$scope.location = parseInt(newVal.location_id);
+			$scope.category = parseInt(newVal.category_id);
+			$scope.get_sub_category(newVal.category_id);
+			$scope.ads_type = newVal.ads_type;
+			$scope.price = newVal.price;
+			$scope.description = newVal.description;
+			$scope.featured_gallery = newVal.featured_image;
+			$scope.get_gallery(newVal.id);
+			$scope.files = files = "";
+			$scope.errFiles = errFiles = "";
+			if (!$scope.$$phase) {
+				$scope.$apply();
+			}
+		}
+		else if(angular.isUndefined(newVal) ){
+			$scope.title = "";
+			$scope.category = 0;
+			$scope.subcategory = 0;
+			$scope.price = "";
+			$scope.description = "";
+			$scope.featured_gallery = "";
+			$scope.files = files = "";
+       		$scope.errFiles = errFiles = "";
+		}
+	});
+
+	/**
+	 * This is Used with edit ad page.
+	 * when user chose what ad to edit,
+	 * and adsSingle watch will update the input.
+	 * but the sub_category option will not be updated because
+	 * we dont know what the category is. so we load the category first
+	 * then the category will update sub_categories. and this function will listen to that.
+	 * and when the set of sub_categories is selected, 
+	 * we chose what the sub_category the user selected.
+	 */
+	$scope.$watch('sub_categories', function(newVal, oldVal){
+		if(!angular.isUndefined($scope.adsSingle))
+		{
+			$scope.subcategory = parseInt($scope.adsSingle.sub_category_id);	
+		}
+	});
+
+	/**
+	 * Updates the ads type on edit ads page (new_ad)
+	 *
+	 * when ads is edited, it waits for the loading of ads
+	 * then wait for category_id to load.
+	 * then wait for the ads_types to be updated
+	 * then select what ads in database
+	 */
+	$scope.$watch('ads_types', function(newVal, oldVal){
+		if(!angular.isUndefined($scope.adsSingle))
+		{
+			$scope.ads_type = parseInt($scope.adsSingle.ads_type_id);	
+		}
+	});
+
+	/**
+	 * when currentCategoryId is change,
+	 * change the available ads type
+	 */
+	$scope.$watch('currentCategoryId', function(newVal, oldVal){
+		if(newVal !== 0)
+		{
+			$scope.get_ads_type(newVal);	
+		}
+	});
+
+}]);//controller end
 
 app.directive('toNumber', function() {
 	return {

@@ -37,6 +37,11 @@
 	        	<a ng-click="redirect('ads_single',my_ads.id)" class="title-limit" title="{{my_ads.id}}">
 			        {{my_ads.title}}
 			    </a>
+			    <i 
+			    	class="fa fa-trash delete-my-product" 
+                    title="Delete Ad"
+                    ng-click="delete_ad(my_ads.id)"
+			    ></i>
 		        <i 
                     class="fa fa-cog edit-my-product" 
                     title="Edit Ad"
