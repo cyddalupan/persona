@@ -8,7 +8,7 @@ app.config(function($routeProvider) {
 			templateUrl : 'app/home/home.html',
 			controller  : 'homeController'
 		})
-		.when('/subcategory/:category_id/:category_name', {
+		.when('/subcategory/:category_id/:category_name*', {
 			templateUrl : 'app/subcategory/subcategory.html',
 			controller  : 'subCategoryController'
 		})

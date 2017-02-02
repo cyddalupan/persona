@@ -1,4 +1,4 @@
-app.controller('favoritesController', function($scope,$http,$cookies) {
+app.controller('favoritesController', function($scope,$http,$cookies,$location) {
 
 	//checklogin
 	if(angular.isUndefined($cookies.get("user_id"))){
