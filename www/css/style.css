@@ -11,12 +11,6 @@ a{
 	cursor: pointer;
 }
 
-/* #background_image {
-    background: url("../img/log_in2.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-} */
-
 .banner-logo{
     width: 63px;
     float: left;
@@ -50,71 +44,6 @@ a{
 	padding: 15px;
 }
 
-#category  {
-	background-color: black;
-    color: white;
-    display: block;
-    height: 40px;
-    line-height: 40px;
-    text-decoration: none;
-    width: 100px;
-    text-align: center;
-}
-
-.category-ads-image{
-	min-height: 220px;
-}
-
-.button_contact_us {
-	background-color: black;
-	color: white;
-	border: black;
-	font-size: 17px;
-}
-
-#static_data{
-	font-size: 12px;
-}
-
-.text_message {
-	text-align: center;
-	color: white;
-}
-
-.dropdown {
-	font-size: 17px;
-}
-
-.search_img {
-	width: 100%;
-	max-height: 100px;
-	border-radius: 3px;
-}
-
-.search_here_css {
-	width: 750px;
-	padding: 0px;
-	height: 50px;
-	border-radius: 5px;
-}
-
-#borders {
-	width: 300px;
-	height: 150px;
-	border: black 2px solid;
-	background-size: cover;
-	text-align: center;
-	color: white;
-}
-
-#small_border {
-	width: 175px;
-	height: 150px;
-	border: black 2px solid;
-	background-size: cover;
-	text-align: center;
-	color: white;
-}
 
 #footer {
   	background-color: #222222;
@@ -145,338 +74,34 @@ a{
 	padding: 2px;
 }
 
-#home_contact {
-	padding: 8px 15px;
-	margin-bottom: 20px;
-	background-color: #E0E0E0;
-	border-radius: 4px;
-	font-size: 18px;
-	font-family: verdana;
+.mobile-head-menu{
+    margin-left: 15px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+    border: none;
+    box-shadow: none;
 }
 
-.padding {
-	background: black;
+.mobile-head-menu .icon-bar{
+	height: 4px;
+    border-radius: 6px;
 }
 
-
-.contact_us_message {
-	color: #000000;
-	font-family: verdana;
-}
-.form-horizontal .control-label {
-	font-size: 12px;
-	font-family: verdana;
-}
-
-#contact_us_form {
-	font-size: 18px;
-}
-
-.message_form {
-	width: 100%;
-	height: 200px; 
-	text-align: top-right;
-}
-
-.search_engine {
-	background: #de0667;
-}
-
-
-#text_sample {
-	color: white;
-	text-align: center;
-}
-
-#figure {
-	height: 250px;
-	width: 250px;
-	border: black 2px solid;
-	background-size: cover;
-	color: white;
-}
-
-.imghere {
-	width: 100%;
-	height: 100px;
-	background-size: cover;
-	position: center;
-}
-
-.padding {
-	background: black;
-}
-
-.text {
-	text-align: center;
-}
-
-.padding {
-	background: black;
-}
-
-.text {
-	text-align: center;
-}
-
-.gender_option {
-	height: 30px;
-	width: 100px;
-}
-
-#birthday_option {
-	height: 30px;
-}
-
-.buttons{
-	position: center;
-	width: 100px;
-}
-
-h3.ng-binding {
-    color: white;
-    text-shadow: 4px 4px 0px #000;
-}
-
-@media (max-width: 991px) {
-	#borders {
-		width: 175px;
-		height: 150px;
-		border: black 2px solid;
-		background-size: cover;
-		text-align: center;
-		color: white;
-	}
-
-	.padding {
-		padding: 2px;
-	}
-
-	.google_map {
-		width: 300;
-		height: 300px;
-	}
-	#figure {
-		width: 150px;
-		height: 175px;
-		border: black 2px solid;
-		text-align: center;
-		color: white;
-	}
-	
-	.imghere {
-		width: 100%;
-		height: 100px;
-	}
-
-	#text_sample {
-		color: white;
-		text-align: center;
-		font-size: 10px;
-	}
-
-	.paddingfigure {
-		padding: 20px;
-	}
-
-}
-
-#search_bar {
-    width: 130px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-}
-
-/* When the input field gets focus, change its width to 100% */
-/*search_bar:focus {
-    width: 100%;
-}*/
-
-.product-favorites{
-	font-size: 23px;
-	color: rgba(255, 255, 0, 0.7);
-	cursor: pointer;
+.notification-bell{
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	right: 7px;
+    top: 4px;
+}
+.notification-bell .glyphicon-bell{
+    color: #fff;
+    font-size: 30px;
+    right: 8px;
+    top: 8px;
 }
 
-.no-over{
-	overflow: hidden;
-}
-
-.edit-my-product{
-	font-size: 23px;
-	color: rgb(199, 184, 184);
-	cursor: pointer;
-	position: absolute;
-	top: 10px;
-	right: 28px;
-}
-
-.delete-my-product{
-	font-size: 23px;
-    color: rgb(251, 36, 36);
-    cursor: pointer;
+.notification-bell .badge{
+	background-color: #e84949;
     position: absolute;
-    top: -14px;
-    right: 4px;
+    top: 0;
+    right: 0;
 }
-
-#img_category {
-   max-height: 195px;
-   max-width: 100%;
-   margin: auto;
-
-}
-
-.product-list-category{
-	height: 280px;
-	text-align: center;
-	margin-bottom: 10px;
-}
-#single-product-page{
-    margin-top: -9px;
-    margin-bottom: -13px;
-}
-.product-list{
-	height: 334px;
-	text-align: center;
-	margin-bottom: 32px;
-	position: relative;
-}
-
-.ad_box{
-	position: relative;
-}
-
-.inside-category-ads-image{
-	min-height: 227px;
-}
-
-.featured_inside_ad{
-	position: absolute;
-    left: 5px;
-    top: -5px;
-    font-size: 31px;
-    cursor: pointer;
-    color: rgba(255, 255, 0, 0.82);
-}
-
-.featured_ad{
-	position: absolute;
-    left: 2px;
-    top: -7px;
-    font-size: 31px;
-    color: rgba(255, 255, 0, 0.82);
-}
-
-.featured_my_ad{
-	position: absolute;
-    left: 21px;
-    top: -5px;
-    font-size: 31px;
-    cursor: pointer;
-    color: rgba(255, 255, 0, 0.82);
-}
-
-.my-ads-image{
-	min-height: 195px;
-}
-
-.edit-ads-img{
-    z-index: -1;
-    position: relative;
-    margin-right: -23px;
-}
-
-.featured-ad-img{
-	margin-left: -27px;
-    z-index: -1;
-    position: relative;
-}
-
-
- #img_subcategory {
-    height: 250px;
-}
-
-#subcategory_product_name{
-    color: white;
-    text-transform: uppercase;
-}
-
-.sub-category-icon{
-	height: 25px;
-	width: 25px
-}
-
-.gallery-single{
-	width:27%;
-	margin-right:6%;
-}
-
-.desc-limit{
-	overflow: hidden;
-	max-height: 55px;
-}
-
-.title-limit{
-    overflow: hidden;
-    width: 84%;
-    margin-left: 10%;
-    display: block;
-    height: 23px;
-}
-
-.single-prod-slider .carousel-inner{
-	text-align: center;
-}
-.single-prod-slider .carousel-inner img{
-	margin: auto;
-}
-
-.panel-heading a{
-	color: #fff;
-}
-
-.thumb {
-    width: 24px;
-    height: 24px;
-    float: none;
-    position: relative;
-    top: 7px;
-}
-
-form .progress {
-    line-height: 15px;
-}
-
-.progress {
-    display: inline-block;
-    width: 100px;
-    border: 3px groove #CCC;
-}
-
-.progress div {
-    font-size: smaller;
-    background: orange;
-    width: 0;
-}
-
-.big-banner-image{
-	width: 100%;
-	max-width: 950px;
-	max-height: 200px;
-	clear:both;
-}
-
-.bannerbox{
-	text-align: center;
-	margin-bottom: 46px;
-	cursor: pointer;
-}
-
-
-
-

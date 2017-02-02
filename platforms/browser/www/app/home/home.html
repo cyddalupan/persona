@@ -1,0 +1,21 @@
+<ng-include src="'app/include_search/search.html'"></ng-include>
+
+<div class="container">    
+    <div class="row">
+        <div class="product-list-category col-md-4 col-sm-6 col-xs-12" ng-repeat="category in allCategories">
+            <a  href="#/subcategory/{{category.id}}" ng-click="ads_type_id = 0">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="text-align: center">
+                        <span id="category_product_name">
+                            {{category.name}}
+                        </span>
+                    </div>
+                    <div class="panel-body category-ads-image">
+                        <img ng-src="{{s_url}}{{category.photo}}" id="img_category" class="img-responsive" alt="Image">
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<br><br>

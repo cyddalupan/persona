@@ -1,0 +1,13 @@
+#contact_page_content {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#home_contact {
+	padding: 8px 15px;
+	margin-bottom: 20px;
+	background-color: #E0E0E0;
+	border-radius: 4px;
+	font-size: 18px;
+	font-family: verdana;
+}

@@ -1,5 +1,0 @@
-[12-Jun-2016 00:45:10 America/Chicago] PHP Warning:  require(/home2/iwebframe/public_html/andrewace/persona/bootstrap/../vendor/autoload.php): failed to open stream: No such file or directory in /home2/iwebframe/public_html/andrewace/persona/bootstrap/autoload.php on line 17
-[12-Jun-2016 00:45:10 America/Chicago] PHP Fatal error:  require(): Failed opening required '/home2/iwebframe/public_html/andrewace/persona/bootstrap/../vendor/autoload.php' (include_path='.:/opt/php54/lib/php') in /home2/iwebframe/public_html/andrewace/persona/bootstrap/autoload.php on line 17
-[21-Jul-2016 17:47:02 UTC] PHP Fatal error:  Call to a member function toJson() on a non-object in /home2/iwebframe/public_html/persona/app/Http/Controllers/AdsController.php on line 37
-[22-Jul-2016 10:04:32 UTC] PHP Fatal error:  Call to a member function toJson() on a non-object in /home2/iwebframe/public_html/persona/app/Http/Controllers/AdsController.php on line 37
-[22-Jul-2016 10:06:18 UTC] PHP Fatal error:  Call to a member function toJson() on a non-object in /home2/iwebframe/public_html/persona/app/Http/Controllers/AdsController.php on line 37

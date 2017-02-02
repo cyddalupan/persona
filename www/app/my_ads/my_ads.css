@@ -1,0 +1,87 @@
+
+#img_myads {
+   height: 250px;
+}
+#myads_title {
+		 font-family: Verdana;
+   text-align: center;
+		 font-weight: bold;
+		 color:#005ce6;
+		 padding: 10px 0px 10px 0px;
+}
+#myads_price{
+		font-family: "Times New Roman", Times, serif;
+		font-size: 12px;
+		font-style: italic;
+		color: black;
+		text-align: center;
+		padding: 0px 0px 5px 0px;
+}
+#myads_desc{
+		text-align: center;
+		padding: 0px 0px 10px 0px;
+}
+.edit-ads-img{
+    z-index: -1;
+    position: relative;
+    margin-right: -23px;
+}
+
+.featured-ad-img{
+	margin-left: -27px;
+    z-index: -1;
+    position: relative;
+}
+.product-list{
+	height: 334px;
+	text-align: center;
+	margin-bottom: 32px;
+	position: relative;
+}
+
+.featured_my_ad{
+	position: absolute;
+    left: 21px;
+    top: -5px;
+    font-size: 31px;
+    cursor: pointer;
+    color: rgba(255, 255, 0, 0.82);
+}
+
+
+.my-ads-title-limit{
+    overflow: hidden;
+    width: 84%;
+    margin-left: 10%;
+    display: block;
+    height: 23px;
+    color: #fff;
+}
+
+.my-ads-image{
+	min-height: 195px;
+}
+
+#img_category {
+   max-height: 195px;
+   max-width: 100%;
+   margin: auto;
+}
+
+.delete-my-product{
+  font-size: 23px;
+    color: rgb(251, 36, 36);
+    cursor: pointer;
+    position: absolute;
+    top: -14px;
+    right: 4px;
+}
+
+.edit-my-product{
+  font-size: 23px;
+  color: rgb(199, 184, 184);
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 28px;
+}

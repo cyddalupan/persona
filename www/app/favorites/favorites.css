@@ -1,0 +1,16 @@
+.no-over{
+	overflow: hidden;
+}
+
+#img_fav {
+        height: 200px;
+        width: 200px;
+    }
+    #fv_product_name {
+    	font-family: Verdana;
+    	font-weight: 700;
+    }
+    #fv_price_ads {
+    	font-style: italic;
+    	color: red;
+    }

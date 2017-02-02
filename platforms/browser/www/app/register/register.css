@@ -1,0 +1,23 @@
+#home_register {
+	padding: 8px 15px;
+	margin-bottom: 20px;
+	background-color: #E0E0E0;
+	border-radius: 4px;
+	font-size: 18px;
+	font-family: verdana;
+}
+
+#register_content {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+  
+    #hidden {
+      display: none;
+    }
+  
+    #warn {
+      color: red;
+      border: 2px solid red;
+      background: red;
+    }

@@ -1,103 +1,82 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html lang="en" ng-app="myApp">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" /> -->
-    <link rel="apple-touch-icon" href="img/favicon.png">
-    <link rel="icon" href="img/favicon.png">
-    <!-- Good default declaration:
-    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-        * Enable inline JS: add 'unsafe-inline' to default-src
-        * Enable eval(): add 'unsafe-eval' to default-src
-    * Create your own at http://cspisawesome.com
-    -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
-
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="Haynaku.ph" />
-    <meta property="og:type" content="App" />
-    <meta property="og:image" content="https://pbs.twimg.com/profile_images/725989707360804864/cMTsf9ev.jpg" />
-    <meta property="og:url" content="haynaku.ph" />
-    <meta property="og:description" content="Your new stop and shop website" />
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<html lang="en" ng-app="app">
     <head>
-        <title>Haynaku</title>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+        <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+        <title>App Title</title>
+        <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+        <link rel="icon" href="icon.png" type="image/x-icon">
+        <!-- Bootstrap -->
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Page -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="app/home/home.css" rel="stylesheet">
+        <link href="app/subcategory/subcategory.css" rel="stylesheet">
+        <link href="app/mobile/mobile.css" rel="stylesheet">
+        <link href="app/contactus/contactus.css" rel="stylesheet">
+        <link href="app/register/register.css" rel="stylesheet">
+        <link href="app/login/login.css" rel="stylesheet">
+        <link href="app/ads_single/ads_single.css" rel="stylesheet">
+        <link href="app/favorites/favorites.css" rel="stylesheet">
+        <link href="app/my_ads/my_ads.css" rel="stylesheet">
+        <link href="app/new_ad/new_ad.css" rel="stylesheet">
+        <link href="app/notification/notification.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
     </head>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body id="background_image" ng-controller="SiteController">
+    <body ng-controller="mainController">
         <div class="app navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <button type="button" class="navbar-toggle pull-left mobile-head-menu" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-
                     </button> 
 
-                    <img src="img/banner-logo.png" class="banner-logo"> 
-                    <a class="navbar-brand" ng-click="redirect('category')">
+                    <a class="navbar-brand" href="#/">
                         Haynaku 
                     </a>
 
+                    <div class="notification-bell" ng-show="user_id">
+                        <a href="#/notification" ng-click="CloseNav()">
+                            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                        </a>
+                        <span class="badge" ng-show="notification_count">{{notification_count}}</span>
+                    </div>
+
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li ng-show="mobile_page_show"><a ng-click="redirect('mobile')"><i class="fa fa-mobile"></i> Mobile Apps</a>
+                    <ul class="nav navbar-nav text-center">
+                        <li ng-show="mobile_page_show">
+                            <a href="#/mobile" ng-click="CloseNav()">
+                                <i class="fa fa-mobile"></i> Mobile Apps
+                            </a>
                         </li>
-                        <li><a ng-click="redirect('contactus')"><i class="fa fa-phone"></i> Contact us</a>
+                        <li><a href="#/contactus" ng-click="CloseNav()"><i class="fa fa-phone"></i> Contact us</a>
                         </li>
-                        <li><a ng-click="redirect('register')" ng-hide="user_id"><i class="fa fa-user-plus"></i> Register</a>
+                        <li><a href="#/register" ng-hide="user_id" ng-click="CloseNav()"><i class="fa fa-user-plus"></i> Register</a>
                         </li>
-                         <li><a ng-click="redirect('login')" ng-hide="user_id"><i class="fa fa-sign-in"></i> Login</a>
+                         <li><a href="#/login" ng-hide="user_id" ng-click="CloseNav()"><i class="fa fa-sign-in"></i> Login</a>
                         </li>
                         <li ng-show="user_id">
-                            <a ng-click="logout()" class="btn btn-link">
-                                <i class="fa fa-user-times" aria-hidden="true"></i>
+                            <a ng-click="logout()" ng-click="CloseNav()" class="btn btn-link">
+                                <i class="fa fa-user-times"></i>
                                 Logout
                             </a>
                         </li>
@@ -109,77 +88,37 @@
         <br>
         <br>
         <br>
-
-
+        
         <div class="container-fluid">
-            <!--Call all page inisde header and footer-->
-
-            <!--
-                Category page
-                note:notice single quote
-                inside double quote
-            -->
-            <ng-include src="'category.html'" ng-show="imActive('category')"></ng-include>
-
-            <!--ContactUs-page-->
-            <ng-include src="'contactus.html'" ng-show="imActive('contactus')"></ng-include>
-
-            <!--mobile-page-->
-            <ng-include src="'mobile-page.html'" ng-show="imActive('mobile')"></ng-include>
-
-            <!--registration-page-->
-            <ng-include src="'registration.html'"  ng-show="imActive('register')"></ng-include>
-
-            <!--Login-page-->
-            <ng-include src="'login-page.html'" ng-show="imActive('login')"></ng-include>
-
-            <!--SubcategoryCars-page-->
-            <ng-include src="'sub_category.html'" ng-show="imActive('subcategory')"></ng-include>
-
-            <!--SubcategoryCars-page-->
-            <ng-include src="'search.html'" ng-show="imActive('search')"></ng-include>
-
-            <!--SingleAds-page-->
-            <ng-include src="'ads_single.html'" ng-show="imActive('ads_single')"></ng-include>
-
-            <!--My Ads-page-->
-            <ng-include src="'my_ads.html'" ng-show="imActive('my_ads')"></ng-include>
-
-            <!--Favorites-page-->
-            <ng-include src="'favorites.html'" ng-show="imActive('favorites')"></ng-include>
-          
-            <!--New Ad-page-->
-            <ng-include src="'new_ad.html'" ng-show="imActive('new_ad')"></ng-include>
-
-            <!--Big Banner Page-->
-            <ng-include src="'bigbanner.html'" ng-show="imActive('bigbanner')"></ng-include>
+            
+            <!--inside page-->
+            <div ng-view></div>
 
             <br>
             <br>
             <br>
             <br>
-
         </div>
 
         <footer id="footer">
             <div class="row">
                 <div class="col-xs-4 text-center">
                     <h4>
-                        <a ng-click="redirect('category')">
+                        <a href="#/" ng-click="CloseNav()">
                             <i class="fa fa-tachometer fa-lg"></i><br>Categories
                         </a>
                     </h4>
                 </div>
                 <div class="col-xs-4 text-center">
                     <h4>
-                        <a ng-click="checklogin('my_ads')">
+                        <a href="#/my_ads" ng-click="CloseNav()">
                             <i class="fa fa-list fa-lg"></i><br>My Ads
                         </a>
                     </h4>
                 </div>
                 <div class="col-xs-4 text-center">
                     <h4>
-                        <a ng-click="checklogin('favorites')">
+                        <a href="#/favorites" ng-click="CloseNav()">
                             <i class="fa fa-list-alt fa-lg"></i><br>Favorites
                         </a>
                     </h4>
@@ -187,19 +126,36 @@
             </div>
         </footer>
 
-        <script src="js/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/angular.min.js"></script>
-        <script src="js/angular-route.js"></script>
-        <script src="js/ng-file-upload-all.min.js"></script>
-        <script src="js/angular-cookies.min.js"></script>
-        <script src="js/app.js"></script>
         <!--PhoneGap-->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
+        <!--Installs-->
+        <script src="settings.js"></script>
+        <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-cookies.min.js"></script>
+        <script src="js/angular-route.js"></script>
+        <script src="js/ng-file-upload-all.min.js"></script>
+        <!--Route-->
+        <script src="route.js"></script>
+        <script src="main.js"></script>
+        <!--Controllers-->
+        <script src="app/home/home.js"></script>
+        <script src="app/subcategory/subcategory.js"></script>
+        <script src="app/mobile/mobile.js"></script>
+        <script src="app/contactus/contactus.js"></script>
+        <script src="app/register/register.js"></script>
+        <script src="app/login/login.js"></script>
+        <script src="app/include_search/include_search.js"></script>
+        <script src="app/search/search.js"></script>
+        <script src="app/ads_single/ads_single.js"></script>
+        <script src="app/favorites/favorites.js"></script>
+        <script src="app/my_ads/my_ads.js"></script>
+        <script src="app/new_ad/new_ad.js"></script>
+        <script src="app/notification/notification.js"></script>
     </body>
-
 </html>

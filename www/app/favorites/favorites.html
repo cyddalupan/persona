@@ -1,0 +1,34 @@
+<div id="No-Favorites" class="row" ng-show="(my_favorites.length <= 0)">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3 class="panel-title">No Favorites Yet</h3>
+            </div>
+            <div class="panel-body">
+                You can add favorites by Clicking
+                <img ng-src="{{s_url}}site-img/favorites-button-min.png" class="img-thumbnail">
+                The Star Icon on the upper right of a product
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 no-over panel panel-default" ng-repeat="my_favorite in my_favorites">
+        <div class="row panel-body">
+            <a href="#/ads_single/{{my_favorite.ads.id}}" >
+                <div class="container col-md-2 col-md-offset-1">
+                    <img ng-src="{{s_url}}{{my_favorite.ads.featured_image.path}}" class="img-thumbnail">
+                </div>
+                <div class="container col-md-8">
+                    <label>Product Name:</label> {{my_favorite.ads.title}}
+                    <hr>
+                    <label>Price:</label> {{my_favorite.ads.price}}
+                    <hr>
+                    <label>Description:</label> {{my_favorite.ads.description}}
+                    <hr>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
