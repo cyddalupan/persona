@@ -5,6 +5,35 @@ app.controller('favoritesController', function($scope,$http,$cookies,$location) 
 		$location.url('login');
 	}
 
+
+	/**
+	 * Remove Favorites
+	 * Remove Id to array of Favorites
+	 */
+	$scope.RemoveFavorites = function(product_id){
+		if(!confirm('Are you sure you want to Remove Favorite?')){
+			return false;
+		}
+		$http({
+			method: 'POST',
+			url: $scope.s_url+'remove-favorites/'+product_id+'/'+$cookies.get("user_id"),
+			data:{
+				'user_id'	: $cookies.get("user_id"),
+				'token'		: $cookies.get("token")
+			}
+		}).then(function successCallback(response) {
+			if(response.data == 'logout'){
+				alert("Session Expired Please Login Again.")
+				$scope.logout();
+			}
+
+			location.reload();
+		}, function errorCallback(response) {
+			console.log(response);
+			alert("Please check connection and try again.");
+		});
+	}
+
 	/**
 	 * Get Users Favorite Products
 	 */

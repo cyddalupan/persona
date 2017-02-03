@@ -61,6 +61,11 @@
 	max-height: 55px;
 }
 
+.sub-category-icon{
+	width: 30px;
+	height: 30px;
+}
+
 @media screen and (max-width: 560px) {
 	.product-list{
 		height: 282px !important;
