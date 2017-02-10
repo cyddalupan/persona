@@ -5,7 +5,6 @@ app.controller('favoritesController', function($scope,$http,$cookies,$location) 
 		$location.url('login');
 	}
 
-
 	/**
 	 * Remove Favorites
 	 * Remove Id to array of Favorites
