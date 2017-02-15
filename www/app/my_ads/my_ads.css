@@ -49,13 +49,15 @@
 }
 
 
-.my-ads-title-limit{
+.my-ads-title-limit{ 
+
     overflow: hidden;
     width: 84%;
     margin-left: 10%;
     display: block;
     height: 23px;
     color: #fff;
+    
 }
 
 .my-ads-image{
