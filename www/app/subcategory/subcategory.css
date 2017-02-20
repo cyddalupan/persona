@@ -14,7 +14,7 @@
 .product-list{
 	height: 334px;
 	text-align: center;
-	margin-bottom: 32px;
+	margin-bottom: 70px;
 	position: relative;
 }
 
@@ -58,7 +58,7 @@
 
 .desc-limit{
 	overflow: hidden;
-	max-height: 55px;
+	max-height: 70px;
 }
 
 .sub-category-icon{
@@ -74,7 +74,17 @@
 
 @media screen and (max-width: 430px) {
 	.product-list{
-		height: 228px !important;
+		height: 268px !important;
+	}
+	.desc-limit{
+	max-height: 110px !important;
+	}
+	.panel-body a img {
+		height: 80px;
+		width: 98px;
+	}
+	.fa {
+		padding: 0px;
 	}
 }
 

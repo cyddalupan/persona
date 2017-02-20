@@ -1,13 +1,13 @@
 .product-list{
 	height: 334px;
 	text-align: center;
-	margin-bottom: 32px;
+	margin-bottom: 70px;
 	position: relative;
 }
 
 .desc-limit{
 	overflow: hidden;
-	max-height: 55px;
+	max-height: 110px;
 }
 
 #subcategory_product_name{

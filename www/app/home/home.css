@@ -28,3 +28,20 @@
     color: #fff;
     font-size: 22px;
 }
+
+@media screen and (max-width: 560px) {
+
+}
+
+@media screen and (max-width: 430px) {
+.category-name{
+    bottom: 59px;
+    left: 3px;
+    font-size: 20px;
+}
+}
+
+@media screen and (max-width: 260px) {
+
+
+}
