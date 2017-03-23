@@ -1,0 +1,16 @@
+.product-list{
+	height: 334px;
+	text-align: center;
+	margin-bottom: 70px;
+	position: relative;
+}
+
+.desc-limit{
+	overflow: hidden;
+	max-height: 110px;
+}
+
+#subcategory_product_name{
+    color: white;
+    text-transform: uppercase;
+}

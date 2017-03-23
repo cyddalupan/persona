@@ -1,4 +1,4 @@
-app.controller('registerController', function($scope,$http) {
+app.controller('registerController', function($scope,$http,$location) {
 	/**
 	 * Submit Registration form
 	 * to create new user
@@ -20,7 +20,7 @@ app.controller('registerController', function($scope,$http) {
 			}).then(function successCallback(response) {
 				if(response.data == "added"){
 					alert('Registration Success!');
-					$scope.redirect('login');
+					$location.url('login');
 				}else{
 					alert(response.data);
 				}

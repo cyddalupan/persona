@@ -26,6 +26,11 @@
         <link href="app/contactus/contactus.css" rel="stylesheet">
         <link href="app/register/register.css" rel="stylesheet">
         <link href="app/login/login.css" rel="stylesheet">
+        <link href="app/ads_single/ads_single.css" rel="stylesheet">
+        <link href="app/favorites/favorites.css" rel="stylesheet">
+        <link href="app/my_ads/my_ads.css" rel="stylesheet">
+        <link href="app/new_ad/new_ad.css" rel="stylesheet">
+        <link href="app/notification/notification.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,34 +43,40 @@
         <div class="app navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <button type="button" class="navbar-toggle pull-left mobile-head-menu" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button> 
 
-                    <img src="img/banner-logo.png" class="banner-logo"> 
                     <a class="navbar-brand" href="#/">
                         Haynaku 
                     </a>
 
+                    <div class="notification-bell" ng-show="user_id">
+                        <a href="#/notification" ng-click="CloseNav()">
+                            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                        </a>
+                        <span class="badge" ng-show="notification_count">{{notification_count}}</span>
+                    </div>
+
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav text-center">
                         <li ng-show="mobile_page_show">
-                            <a href="#/mobile">
+                            <a href="#/mobile" ng-click="CloseNav()">
                                 <i class="fa fa-mobile"></i> Mobile Apps
                             </a>
                         </li>
-                        <li><a href="#/contactus"><i class="fa fa-phone"></i> Contact us</a>
+                        <li><a href="#/contactus" ng-click="CloseNav()"><i class="fa fa-phone"></i> Contact us</a>
                         </li>
-                        <li><a href="#/register" ng-hide="user_id"><i class="fa fa-user-plus"></i> Register</a>
+                        <li><a href="#/register" ng-hide="user_id" ng-click="CloseNav()"><i class="fa fa-user-plus"></i> Register</a>
                         </li>
-                         <li><a href="#/login" ng-hide="user_id"><i class="fa fa-sign-in"></i> Login</a>
+                         <li><a href="#/login" ng-hide="user_id" ng-click="CloseNav()"><i class="fa fa-sign-in"></i> Login</a>
                         </li>
                         <li ng-show="user_id">
-                            <a ng-click="logout()" class="btn btn-link">
-                                <i class="fa fa-user-times" aria-hidden="true"></i>
+                            <a ng-click="logout()" ng-click="CloseNav()" class="btn btn-link">
+                                <i class="fa fa-user-times"></i>
                                 Logout
                             </a>
                         </li>
@@ -93,21 +104,21 @@
             <div class="row">
                 <div class="col-xs-4 text-center">
                     <h4>
-                        <a href="#/">
+                        <a href="#/" ng-click="CloseNav()">
                             <i class="fa fa-tachometer fa-lg"></i><br>Categories
                         </a>
                     </h4>
                 </div>
                 <div class="col-xs-4 text-center">
                     <h4>
-                        <a href="#/my_ads">
+                        <a href="#/my_ads" ng-click="CloseNav()">
                             <i class="fa fa-list fa-lg"></i><br>My Ads
                         </a>
                     </h4>
                 </div>
                 <div class="col-xs-4 text-center">
                     <h4>
-                        <a href="#/favorites">
+                        <a href="#/favorites" ng-click="CloseNav()">
                             <i class="fa fa-list-alt fa-lg"></i><br>Favorites
                         </a>
                     </h4>
@@ -126,7 +137,9 @@
         <script src="js/jquery-2.1.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/angular.min.js"></script>
+        <script src="js/angular-cookies.min.js"></script>
         <script src="js/angular-route.js"></script>
+        <script src="js/ng-file-upload-all.min.js"></script>
         <!--Route-->
         <script src="route.js"></script>
         <script src="main.js"></script>
@@ -137,5 +150,12 @@
         <script src="app/contactus/contactus.js"></script>
         <script src="app/register/register.js"></script>
         <script src="app/login/login.js"></script>
+        <script src="app/include_search/include_search.js"></script>
+        <script src="app/search/search.js"></script>
+        <script src="app/ads_single/ads_single.js"></script>
+        <script src="app/favorites/favorites.js"></script>
+        <script src="app/my_ads/my_ads.js"></script>
+        <script src="app/new_ad/new_ad.js"></script>
+        <script src="app/notification/notification.js"></script>
     </body>
 </html>

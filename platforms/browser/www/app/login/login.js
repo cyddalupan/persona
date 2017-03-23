@@ -1,4 +1,9 @@
-app.controller('loginController', function($scope,$http) {
+app.controller('loginController', function($scope,$http,$cookies,$location) {
+
+	if(!angular.isUndefined($cookies.get("user_id")))
+	{
+		$location.url('my_ads');
+	}
 
 	/**
 	 * User Loged in with username and password
@@ -18,12 +23,10 @@ app.controller('loginController', function($scope,$http) {
 			if(response.data.user_id != 0){
 				$cookies.put("user_id", response.data.user_id);
 				$cookies.put("token", response.data.token);
-				$scope.redirect('my_ads');
 				$scope.user_id = response.data.user_id;
 				$scope.welcome_user = response.data.message;
 				$scope.hash = response.data.hash;
-				$scope.getMyAds();
-				$scope.getUserFavorites(response.data.user_id);
+				location.reload();
 			}
 		}, function errorCallback(response) {
 			console.log(response);

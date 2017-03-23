@@ -73,3 +73,35 @@ a{
 .padding {
 	padding: 2px;
 }
+
+.mobile-head-menu{
+    margin-left: 15px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+    border: none;
+    box-shadow: none;
+}
+
+.mobile-head-menu .icon-bar{
+	height: 4px;
+    border-radius: 6px;
+}
+
+.notification-bell{
+	position: absolute;
+	right: 7px;
+    top: 4px;
+}
+.notification-bell .glyphicon-bell{
+    color: #fff;
+    font-size: 30px;
+    right: 8px;
+    top: 8px;
+}
+
+.notification-bell .badge{
+	background-color: #e84949;
+    position: absolute;
+    top: 0;
+    right: 0;
+}

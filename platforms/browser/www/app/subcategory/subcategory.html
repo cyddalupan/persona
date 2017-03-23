@@ -1,8 +1,102 @@
 <br>
+<ng-include src="'app/include_search/include_search.html'"></ng-include>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-subccc
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li role="presentation" ng-click="click_ads_type(0,'inside_category')" ng-class="click_ads_type_active(0)"><a>All</a></li>
+            <li role="presentation" ng-click="click_ads_type(ads_type.id,'inside_category')" ng-class="click_ads_type_active(ads_type.id)" ng-repeat="ads_type in ads_types"><a>{{ads_type.type}}</a></li>
+        </ul>
+    </div>
+</div>
+<h1 class="text-center text-danger">
+    {{category_name}}
+</h1>
+<hr>
+<div class="row">
+    <div class="col-md-2">
+        <hr>
+        <h4>Sub Category</h4>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" ng-click="selec_sidebar_sub_category(0)" ng-class="selec_sidebar_sub_category_is_active(0)">
+                <a href="">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    All Sub Category
+                </a>
+            </li>
+            <li role="presentation"  ng-click="selec_sidebar_sub_category(sub_category.id)" ng-class="selec_sidebar_sub_category_is_active(sub_category.id)" ng-repeat="sub_category in sub_categories">
+                <a href="">
+                    <img class="sub-category-icon" ng-src="{{s_url}}{{sub_category.icon}}"> 
+                    {{sub_category.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-10">
+        <div id="No-Favorites" class="row" ng-show="no_ads_result">
+            <div class="col-md-12">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">No Result Found</h3>
+                    </div>
+                    <div class="panel-body">
+                        Go <a href="#" ng-click="redirect('category');">Back</a> and Try Other Categories.
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div class="row">
+            <div ng-repeat="perAds in allAds">
+                <div class="bannerbox" ng-show="bigbannershow($index)" ng-init="get_random_banner($index)" >
+                    <a href="#/bigbanner/{{BigBanners[$index].id}}"></a>
+                    <img class="big-banner-image" ng-src="{{s_url}}{{BigBanners[$index].image}}">
+                </div>
+                <div class="product-list col-md-3 col-sm-4 col-xs-6">
+                    <div class="panel panel-primary ad_box">
+                        <div class="panel-heading">
+                            <i class="fa fa-bookmark featured_inside_ad" ng-show="showFullRibbon(perAds.is_featured)" aria-hidden="true"></i>
+                            <a href="#/ads_single/{{perAds.id}}">
+                                <span id="subcategory_product_name"  class="title-limit">
+                                    {{perAds.title}}
+                                </span>
+                            </a>
+                            <i 
+                                class="fa fa-star-o pull-right product-favorites" 
+                                title="Add to your Favorites"
+                                ng-click="addFavorites(perAds.id)"
+                                ng-show="IfShowFavoriteBot(perAds.id)"
+                            ></i>
+                            <i 
+                                class="fa fa-star pull-right product-favorites" 
+                                title="Remove Favorites"
+                                ng-click="RemoveFavorites(perAds.id)"
+                                ng-show="IfShowUnFavoriteBot(perAds.id)"
+                            ></i>
+                        </div>
+                        <div class="panel-body inside-category-ads-image">
+                            <a href="#/ads_single/{{perAds.id}}">
+                                <img ng-src="{{s_url}}{{perAds.featured_image.path}}" id="img_category" class="img-responsive" alt="Image"></div>
+                            </a>
+                        <div class="panel-footer desc-limit" >
+                            <b>Price: </b> 
+                            <br>
+                            {{perAds.price|currency}}
+                            <br>
+                            <b>Description:</b> 
+                            <br>
+                            {{perAds.description}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <h1>
+                <i class="fa fa-spin text-primary fa-circle-o-notch" ng-show="pagerloader" aria-hidden="true"></i>
+            </h1>
+        </div>
+        <br><br>
+    </div>
+</div>
+

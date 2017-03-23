@@ -1,0 +1,128 @@
+<br>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group input-group-lg">
+                <input type="text" class="form-control" placeholder="Ex: Cellphone, Computer, Camera, Cars, Furnitures, Property" ng-model="searchbox">
+            </div>
+        </div>
+    </div>
+ </div>
+<br>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+            <div class="col-md-3">
+                Order by:<br>
+                <select class="form-control search_order" 
+                        ng-model="search_order"
+                        >
+                    <option>Newest</option>
+                    <option>Oldest</option>
+                    <option>Cheapest</option>
+                    <option>Most Expensive</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                Location:<br>
+                <select class="form-control search_location"
+                        ng-model="search_location"
+                        ng-options="location.id as location.name for location in locations">
+                </select>
+            </div>
+            <div class="col-md-3">
+                Category:<br>
+                <select class="form-control search_category" 
+                        ng-model="search_category" 
+                        ng-change="search_category_submit(search_category)"
+                        ng-options="category.id as category.name for category in allCategories">
+                </select>
+            </div>
+            <div class="col-md-3" ng-show="sub_categories">
+                Sub-category:<br>
+                <select class="form-control search_sub_category" 
+                        ng-model="search_sub_category"
+                        ng-options="sub_category.id as sub_category.name for sub_category in sub_categories">
+                </select>
+            </div>
+        </div>
+        <br>
+        <button type="button"
+                ng-click="advance_search(
+                    searchbox,
+                    search_category,
+                    search_location,
+                    search_sub_category,
+                    search_order
+                )"
+                class="btn btn-primary">
+            Advance Search
+        </button>
+    </div>
+</div>
+<br>
+<!-- <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <ul class="nav nav-tabs">
+            <li role="presentation" ng-click="click_ads_type(0,'search')" ng-class="click_ads_type_active(0)"><a href="#">Anything</a></li>
+            <li role="presentation" ng-click="click_ads_type(ads_type.id,'search')" ng-class="click_ads_type_active(ads_type.id)" ng-repeat="ads_type in ads_types"><a>{{ads_type.type}}</a></li>
+        </ul>
+    </div>
+</div> -->
+<br>
+<div id="No-Favorites" class="row" ng-show="no_ads_result">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3 class="panel-title">No Result Found</h3>
+            </div>
+            <div class="panel-body">
+                Go <a href="#" ng-click="redirect('category');">Back</a> and Try Other Categories.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">        
+    <div class="row">
+        <div ng-repeat="perAds in allAds">
+            <div class="product-list col-md-3 col-sm-4 col-xs-6">
+                <div class="panel panel-primary ad_box">
+                    <div class="panel-heading">
+                        <i class="fa fa-bookmark featured_inside_ad" ng-show="showFullRibbon(perAds.is_featured)" aria-hidden="true"></i>
+                        <a href="#/ads_single/{{perAds.id}}">
+                            <span id="subcategory_product_name"  class="title-limit">
+                                    {{perAds.title}}
+                            </span>
+                        </a>
+                        <i 
+                            class="fa fa-star-o pull-right product-favorites" 
+                            title="Add to your Favorites"
+                            ng-click="addFavorites(perAds.id)"
+                            ng-show="IfShowFavoriteBot(perAds.id)"
+                        ></i>
+                        <i 
+                            class="fa fa-star pull-right product-favorites" 
+                            title="Remove Favorites"
+                            ng-click="RemoveFavorites(perAds.id)"
+                            ng-show="IfShowUnFavoriteBot(perAds.id)"
+                        ></i>
+                    </div>
+                    <div class="panel-body">
+                        <a href="#/ads_single/{{perAds.id}}">
+                            <img ng-src="{{s_url}}{{perAds.featured_image.path}}" id="img_category" class="img-responsive" alt="Image"></div>
+                        </a>
+                    <div class="panel-footer desc-limit" >
+                        <b>Price: </b> {{perAds.price|currency}}<br>
+                        <b>Description:</b> {{perAds.description}}</div>
+                </div>
+            </div>
+        </div>
+     </div>
+     <div class="text-center">
+        <h1>
+            <i class="fa fa-spin text-primary fa-circle-o-notch" ng-show="pagerloader" aria-hidden="true"></i>
+        </h1>
+     </div>
+</div>
+<br><br>

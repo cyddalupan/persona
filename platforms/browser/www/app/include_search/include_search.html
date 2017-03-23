@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container" ng-controller="includeSearchController">
     <div class="panel panel-default">
         <div class="panel-body">
-            <form ng-submit="ads_type_id = 0; redirect('search');search_product(searchbox,0);">
+            <form ng-submit="ads_type_id = 0; redirect(searchbox);">
                 <div class="input-group input-group-lg">
                     <input type="text" class="form-control" placeholder="Ex: Cellphone, Computer, Camera, Cars, Furnitures, Property" ng-model="searchbox">
-                    <span class="input-group-addon" ng-click="redirect('search');search_product(searchbox,0)" style="cursor:pointer">
+                    <span class="input-group-addon" ng-click="ads_type_id = 0; redirect(searchbox);" style="cursor:pointer">
                         <i class="fa fa-search" aria-hidden="true"></i> Search
                     </span>
                 </div>

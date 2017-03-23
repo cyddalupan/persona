@@ -7,8 +7,35 @@
 	* create a route
 	* create folder on app
 	* create html css and js file
-	* add js controller code
 	* include controller and css from index.html
+	* add js controller code
+```
+app.controller('nameOfController', function($scope) {
+
+});
+```
+
+#Pages
+
+* category *
+* mobile *
+* contact *
+* register *
+* login *
+    * forgot password
+	* logout
+* subcategory *
+* search *
+    * advance search
+* singe product page *
+    * comment
+* favorites *
+* my ads -
+    * featured ad
+    * change password
+* add ads -
+    * edit ads
+
 
 ##Framework versions
 
