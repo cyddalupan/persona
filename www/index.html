@@ -21,7 +21,7 @@
         <!-- Page -->
         <link href="css/style.css" rel="stylesheet">
         <link href="app/home/home.css" rel="stylesheet">
-        <link href="app/subcategory/subcategory.css" rel="stylesheet">
+
         <link href="app/mobile/mobile.css" rel="stylesheet">
         <link href="app/contactus/contactus.css" rel="stylesheet">
         <link href="app/register/register.css" rel="stylesheet">
@@ -43,23 +43,24 @@
         <div class="app navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle pull-left mobile-head-menu" data-toggle="collapse" data-target=".navbar-collapse">
+                    <button type="button" class="navbar-toggle pull-left mobile-head-menu" ng-class="{'activeNavbtn': isActive }" ng-click="activeButton()">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button> 
-
-                    <a class="navbar-brand" href="#/">
-                        Haynaku 
+                    <a class="navbar-brand" href="#/" ng-click="CloseNav()">Haynaku 
                     </a>
-
+                    <div class="back-arrow">
+                        <a value="Go Back" onclick="history.back(-1)" ng-click="CloseNav()">
+                            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                        </a>
+                    </div>
                     <div class="notification-bell" ng-show="user_id">
                         <a href="#/notification" ng-click="CloseNav()">
                             <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
                         </a>
                         <span class="badge" ng-show="notification_count">{{notification_count}}</span>
                     </div>
-
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav text-center">
@@ -68,62 +69,98 @@
                                 <i class="fa fa-mobile"></i> Mobile Apps
                             </a>
                         </li>
-                        <li><a href="#/contactus" ng-click="CloseNav()"><i class="fa fa-phone"></i> Contact us</a>
+                        <li>
+                          <a href="#/contactus" ng-click="CloseNav()">
+                            <i class="fa fa-phone"></i> Contact us
+                          </a>
                         </li>
-                        <li><a href="#/register" ng-hide="user_id" ng-click="CloseNav()"><i class="fa fa-user-plus"></i> Register</a>
+                        <li>
+                          <a href="#/register" ng-hide="user_id" ng-click="CloseNav()">
+                            <i class="fa fa-user-plus"></i> Register
+                          </a>
                         </li>
-                         <li><a href="#/login" ng-hide="user_id" ng-click="CloseNav()"><i class="fa fa-sign-in"></i> Login</a>
+                         <li>
+                           <a href="#/login" ng-hide="user_id" ng-click="CloseNav()">
+                             <i class="fa fa-sign-in"></i> Login
+                           </a>
                         </li>
                         <li ng-show="user_id">
                             <a ng-click="logout()" ng-click="CloseNav()" class="btn btn-link">
-                                <i class="fa fa-user-times"></i>
-                                Logout
+                                <i class="fa fa-user-times"></i> Logout
                             </a>
                         </li>
                     </ul>
-                    
                 </div>
             </div>
         </div>
-        <br>
-        <br>
-        <br>
-        
-        <div class="container-fluid">
-            
+        <div id="mySidenav" class="sidenav"  ng-class="{'activenav': isActive}">
+              <ul class="alignleft">
+                  <li ng-show="mobile_page_show">
+                    <a href="#/mobile" ng-click="CloseNav()">
+                      <i class="fa fa-mobile"></i> Mobile Apps
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#/contactus" ng-click="CloseNav()">
+                      <i class="fa fa-phone"></i> Contact us
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#/register" ng-hide="user_id" ng-click="CloseNav()">
+                      <i class="fa fa-user-plus"></i> Register
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#/login" ng-hide="user_id" ng-click="CloseNav()">
+                      <i class="fa fa-sign-in"></i> Login
+                    </a>
+                  </li>
+                  <li ng-show="user_id">
+                    <a ng-click="CloseNav(); logout()" class="">
+                       <i class="fa fa-user-times"></i> Logout
+                    </a>
+                  </li>
+               </ul>
+          <h4 class="nav-category-title"><strong>CATEGORY</strong></h4>
+             <div ng-click="CloseNav()" class="row nav-category" ng-repeat="category in allCategories">
+                  
+                  <a href="#/subcategory/{{category.id}}/{{category.name}}" ng-click="ads_type_id = 0">
+                      {{category.name}}
+                  </a>
+             </div>
+             <br><br><br>
+        </div>
+        <br><br><br>
+        <div ng-click="CloseNav()" class="container-fluid">
             <!--inside page-->
             <div ng-view></div>
-
-            <br>
-            <br>
-            <br>
-            <br>
+        <br><br><br><br>
         </div>
-
-        <footer id="footer">
-            <div class="row">
-                <div class="col-xs-4 text-center">
-                    <h4>
-                        <a href="#/" ng-click="CloseNav()">
-                            <i class="fa fa-tachometer fa-lg"></i><br>Categories
-                        </a>
-                    </h4>
-                </div>
-                <div class="col-xs-4 text-center">
-                    <h4>
-                        <a href="#/my_ads" ng-click="CloseNav()">
-                            <i class="fa fa-list fa-lg"></i><br>My Ads
-                        </a>
-                    </h4>
-                </div>
-                <div class="col-xs-4 text-center">
-                    <h4>
-                        <a href="#/favorites" ng-click="CloseNav()">
-                            <i class="fa fa-list-alt fa-lg"></i><br>Favorites
-                        </a>
-                    </h4>
-                </div>
-            </div>
+        <footer id="footer" ng-show="user_id">
+           <div class="row">
+              <a class="col-xs-4 text-center" href="#/" ng-click="CloseNav()">
+                  <i class="fa fa-tachometer fa-lg"></i><br>Categories
+              </a>
+              <a class="col-xs-4 text-center" href="#/my_ads" ng-click="CloseNav()">
+                  <i class="fa fa-list fa-lg"></i><br>My Ads
+              </a>
+              <a class="col-xs-4 text-center" href="#/favorites" ng-click="CloseNav()">
+                  <i class="fa fa-list-alt fa-lg"></i><br>Favorites
+              </a>
+           </div>
+        </footer>
+        <footer id="footer-mobile">
+           <div class="row">
+              <a class="col-xs-4 text-center" href="#/" ng-click="CloseNav()">
+                  <i class="fa fa-tachometer fa-lg"></i><br>Categories
+              </a>
+              <a class="col-xs-4 text-center" href="#/my_ads" ng-click="CloseNav()">
+                  <i class="fa fa-list fa-lg"></i><br>My Ads
+              </a>
+              <a class="col-xs-4 text-center" href="#/favorites" ng-click="CloseNav()">
+                  <i class="fa fa-list-alt fa-lg"></i><br>Favorites
+              </a>
+           </div>
         </footer>
 
         <!--PhoneGap-->

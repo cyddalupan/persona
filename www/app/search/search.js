@@ -1,5 +1,5 @@
 app.controller('searchController', function($scope,$http,$routeParams,$location) {
-
+	
 	/**
 	 * User to get list of locations,
 	 * originally used for searching ads
@@ -12,12 +12,19 @@ app.controller('searchController', function($scope,$http,$routeParams,$location)
 				url: $scope.s_url+'get_locations'
 			}).then(function successCallback(response) {
 				optionLocation = [];
+				
+				optionLocationdata = [];
+				optionLocationdata['id'] = 0;
+				optionLocationdata['name'] = "Location:";
+				optionLocation.push(optionLocationdata);
+				
 				angular.forEach(response.data, function(value, key) {
 					optionLocationdata = [];
 					optionLocationdata['id'] = parseInt(value.id);
 					optionLocationdata['name'] = value.name;
 					optionLocation.push(optionLocationdata);
 				});
+				
 				$scope.locations = optionLocation;
 				$scope.get_category();
 			}, function errorCallback(response) {
@@ -26,6 +33,7 @@ app.controller('searchController', function($scope,$http,$routeParams,$location)
 			});
 		}
 	}
+	
 
 	/**
 	 * Search the ads with words in the @param seachbox
@@ -66,6 +74,9 @@ app.controller('searchController', function($scope,$http,$routeParams,$location)
 		}
 
 		$scope.searchbox = searchbox;
+		if(searchbox == 0){
+		$scope.searchbox = "";
+		}
 		$scope.currentCategoryId = this.category_id;
 		$scope.location_id = this.location_id;
 		$scope.no_ads_result = 0;
@@ -106,6 +117,12 @@ app.controller('searchController', function($scope,$http,$routeParams,$location)
 		url: $scope.s_url+'get_sub_category/'+category
 		}).then(function successCallback(response) {
 			optionSubCategory = [];
+			
+			optionSubCategorydata = [];
+			optionSubCategorydata['id'] = 0;
+			optionSubCategorydata['name'] = "Subcategory:";
+			optionSubCategory.push(optionSubCategorydata);
+
 			angular.forEach(response.data, function(value, key) {
 				optionSubCategorydata = [];
 				optionSubCategorydata['id'] = parseInt(value.id);
@@ -244,7 +261,11 @@ app.controller('searchController', function($scope,$http,$routeParams,$location)
 	 * Advance search
 	 */
 	$scope.advance_search = function(searchbox,search_category,search_location,search_sub_category,search_order){
-		$location.url('/search/'+searchbox+'/'+search_category+'/'+search_location+'/'+search_sub_category+'/'+search_order);
+		if(searchbox == ""){
+			searchbox = "a";
+			}
+			$location.url('/search/'+searchbox+'/'+search_category+'/'+search_location+'/'+search_sub_category+'/'+search_order);
+			
 	}
 
 	/**
@@ -252,13 +273,17 @@ app.controller('searchController', function($scope,$http,$routeParams,$location)
 	 */
 	$scope.get_category = function()
 	{
-		if(angular.isUndefined($scope.allCategories))
-		{
 			$http({
 				method: 'GET',
 				url: $scope.s_url+'all-category'
 			}).then(function successCallback(response) {
 				optionCategory = [];
+				
+				optionCategorydata = [];
+				optionCategorydata['id'] = 0;
+				optionCategorydata['name'] = "Category:";
+				optionCategory.push(optionCategorydata);
+				
 				angular.forEach(response.data, function(value, key) {
 					optionCategorydata = [];
 					optionCategorydata['id'] = parseInt(value.id);
@@ -270,7 +295,6 @@ app.controller('searchController', function($scope,$http,$routeParams,$location)
 			}, function errorCallback(response) {
 				console.log(response);
 			});
-		}
 	}
 
 
@@ -295,5 +319,5 @@ app.controller('searchController', function($scope,$http,$routeParams,$location)
 
 	//get search variables and show result
 	$scope.search_product($scope.searchbox,$scope.search_category,$scope.search_location,$scope.search_sub_category,$scope.search_order);
-
+	
 });

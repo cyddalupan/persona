@@ -1,5 +1,4 @@
 app.controller('adsSingleController', function($scope,$http,$routeParams,$cookies) {
-	
 	$scope.galleries = '';
 	$scope.Comments = [];
 

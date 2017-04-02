@@ -1,4 +1,5 @@
 app.controller('subCategoryController', function($scope,$http,$routeParams,$timeout,$cookies) {
+	
 	$scope.category_id = $routeParams.category_id;
 	$scope.category_name = $routeParams.category_name;
 	$scope.pagerloader = 1;
@@ -318,5 +319,12 @@ app.controller('subCategoryController', function($scope,$http,$routeParams,$time
 	}
 
 	$scope.get_sub_category($scope.category_id);
-
+	
+	$( ".footer-subcategory" ).click(function() {
+  	$(".subcategory-class").toggleClass( "fadein" );
+	});
+	$('.subcategory-class').on('click', function(){
+    $(".subcategory-class").removeClass('fadein');
+	});
 });
+
