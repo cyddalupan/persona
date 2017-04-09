@@ -25,6 +25,7 @@ app.controller('homeController', function($scope,$http) {
 		}
 	}
 
+	
 	//get category
 	$scope.get_category();
 });

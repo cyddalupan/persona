@@ -63,7 +63,7 @@ app.controller('mainController', function($scope,$cookies,$location,$timeout,$ht
     $scope.isActive = !$scope.isActive;
   }
 	/**
-	* Active Nav Button
+	* Remove Active Nav Button
 	*/
 	$scope.CloseNav = function(){
         $("#mySidenav").removeClass('activenav');

@@ -50,10 +50,14 @@ a{
 	color:#fff !important;
 }
 .navbar-inverse .navbar-nav > li > a:hover {
-	color:#c89090 !important;
+	color:#e4e4e4 !important;
 }
 .navbar-toggle {
 	background-color:#cd0232;
+}
+.glyphicon-bell:hover {
+	color:#e4e4e4 !important;
+	font-size:31px !important;
 }
 .navbar-brand {
 	color:#fff !important;
@@ -63,7 +67,7 @@ a{
 }
 
 .navbar-brand:hover {
-	color:#c89090 !important;
+	color:#e4e4e4 !important;
 }
 
 #footer_button{
@@ -185,7 +189,8 @@ a{
     background-color: rgba(17, 17, 17, 0.95);
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 0px;
+    padding-top: 2px;
+		padding-bottom: 50px;
 	}
 
 	.sidenav a {
@@ -251,6 +256,8 @@ a{
 	.nav-category {
 		margin: 0 0 0 -40px;
 		padding:0px 0px 0px 60px;
+		max-height:100%;
+		bottom:0px;
 	}
 	.nav-category a {
 		margin: 0 0 0 -20px;
