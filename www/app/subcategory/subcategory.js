@@ -4,6 +4,8 @@ app.controller('subCategoryController', function($scope,$http,$routeParams,$time
 	$scope.category_name = $routeParams.category_name;
 	$scope.pagerloader = 1;
 	$scope.usersFavoriteProducts = [];
+	$scope.ShowbannerEvery = 12;
+	$scope.BigBanners = [];
 
 	/**
 	 * changing ads type,
