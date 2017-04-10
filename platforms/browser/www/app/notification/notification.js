@@ -1,5 +1,4 @@
 app.controller('notificationController', function($scope,$cookies,$http) {
-
 	$scope.notifications = [];
 
 	$http({

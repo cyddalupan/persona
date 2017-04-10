@@ -1,5 +1,5 @@
 app.controller('loginController', function($scope,$http,$cookies,$location) {
-
+	$('#footer').show(1);
 	if(!angular.isUndefined($cookies.get("user_id")))
 	{
 		$location.url('my_ads');

@@ -5,8 +5,14 @@
 	padding: 1px;
 	margin: 0;
 }
+.per-category a{
+	color:#fff;
+}
+.per-category a:hover{
+	color:#fff
+}
 .category-img{
-	height: 100%;
+	height: 100% !important;
 	width: 100%;
 }
 
@@ -18,26 +24,48 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color:#000;
-  	filter:alpha(opacity=60); opacity:0.6;
+	background-color:rgba(0, 0, 0, 0.11);
+}
+.black-fade:hover {
+	background-color:rgba(0, 0, 0, 0.01);
+	stroke: black;
+	text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
 }
 .category-name{
-	position: relative;
-    bottom: 31px;
-    left: 21px;
-    color: #fff;
-    font-size: 22px;
+    position: absolute;
+    bottom: 1px;
+    left: 0px;
+    color: inherit;
+    font-size: 18px;
+    padding: 8px 10px;
+    max-width: 100%;
+    display: inline-block;
+		stroke: black;
+		text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+		border-radius: 6px;
+}
+.categorynamefader {
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+@media screen and (max-width: 560px) {
+	.home-container{
+		padding-left:0px !important;
+		padding-right:0px !important;
+	}
+	.per-category{
+		height:176px;
+	}
+	.category-name {
+	stroke: black;
+	text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+	}
 }
 
 @media screen and (max-width: 560px) {
-
-}
-
-@media screen and (max-width: 430px) {
 .category-name{
-    bottom: 59px;
-    left: 3px;
-    font-size: 20px;
+    font-size: 17px;
 }
 }
 

@@ -29,7 +29,7 @@
 		</div>
 	</div>
 	<br>
-    <div class="product-list col-md-3 col-sm-4 col-xs-6" ng-repeat="my_ads in all_my_ads">
+    <div class="product-list-my-ads col-md-3 col-sm-4 col-xs-6" ng-repeat="my_ads in all_my_ads">
 	    <div class="panel panel-primary">
 	        <div class="panel-heading">
 	        	<i class="fa fa-bookmark-o featured_my_ad" ng-show="showBlankRibbon(my_ads.ask_featured)" ng-click="ask_featured_ad(my_ads.id,$index)" aria-hidden="true"></i>
@@ -56,9 +56,9 @@
 					</a>
 				</div>
 				<div id="myads_price">
-					Price: {{my_ads.price}}
+					<b>Price:</b><br /> {{my_ads.price}}
 				</div>
-				<div id="myads_desc" class="desc-limit">
+				<div id="myads_desc" class="desc-limit-my-ads">
 					<b>Description:</b> {{my_ads.description}}
 				</div>
 			</div>

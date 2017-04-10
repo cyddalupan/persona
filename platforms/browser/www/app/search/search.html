@@ -1,65 +1,69 @@
-<br>
-<div class="container">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="form-group input-group-lg">
-                <input type="text" class="form-control" placeholder="Ex: Cellphone, Computer, Camera, Cars, Furnitures, Property" ng-model="searchbox">
-            </div>
-        </div>
-    </div>
- </div>
-<br>
-<div class="row">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="row">
-            <div class="col-md-3">
-                Order by:<br>
-                <select class="form-control search_order" 
-                        ng-model="search_order"
-                        >
-                    <option>Newest</option>
-                    <option>Oldest</option>
-                    <option>Cheapest</option>
-                    <option>Most Expensive</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-                Location:<br>
-                <select class="form-control search_location"
-                        ng-model="search_location"
-                        ng-options="location.id as location.name for location in locations">
-                </select>
-            </div>
-            <div class="col-md-3">
-                Category:<br>
-                <select class="form-control search_category" 
-                        ng-model="search_category" 
-                        ng-change="search_category_submit(search_category)"
-                        ng-options="category.id as category.name for category in allCategories">
-                </select>
-            </div>
-            <div class="col-md-3" ng-show="sub_categories">
-                Sub-category:<br>
-                <select class="form-control search_sub_category" 
-                        ng-model="search_sub_category"
-                        ng-options="sub_category.id as sub_category.name for sub_category in sub_categories">
-                </select>
-            </div>
-        </div>
-        <br>
-        <button type="button"
+<link href="app/search/search.css" rel="stylesheet">
+<div class="row search-container">
+    <i class="fa fa-caret-up arrow-nav" aria-hidden="true"></i>
+    <div class="customize-search">
+        <div class="panel-body-search">
+            <div class="row form-group-search">
+                <input type="text" id="form-control-search1"class="col-xs-9 col-md-11 form-control-search" placeholder="Ex: Cellphone, Computer, Camera, Cars, Furnitures, Property" ng-model="searchbox">
+                <button type="button" class="col-xs-3 col-md-1 custom-button"
                 ng-click="advance_search(
                     searchbox,
                     search_category,
                     search_location,
                     search_sub_category,
                     search_order
-                )"
-                class="btn btn-primary">
-            Advance Search
-        </button>
+                    )"
+                > Search
+                </button>
+            </div>
+        </div>
     </div>
-</div>
+ </div>
+        <div class="row advance-search-dropdown">
+            <div class="custom-text-search col-md-2 col-xs-4 col-sm-2">
+              
+                <select class="select-form-controle search_order" 
+                        ng-model="search_order"
+                        >
+                    <option selected value="0">Order by:</option>
+                    <option>Newest</option>
+                    <option>Oldest</option>
+                    <option>Cheapest</option>
+                    <option>Most Expensive</option>
+                </select>
+            </div>
+            <div class="custom-text-search col-md-2 col-xs-4 col-sm-2">
+              
+                <select class="select-form-controle search_location"
+                        
+                        ng-model="search_location"
+                        ng-options="location.id as location.name for location in locations">
+                  
+                </select>
+            </div>
+          <!--<input type="text" class="col-md-1 col-xs-2 form-control-search2" placeholder="Min Price">
+          <input type="text" class="col-md-1 col-xs-2 form-control-search2" placeholder="Max Price">-->
+            <div class="custom-text-search col-md-2 col-xs-4 col-sm-2">
+             
+                <select class="select-form-controle search_category" 
+                        
+                        ng-model="search_category" 
+                        ng-change="search_category_submit(search_category)"
+                        ng-options="category.id as category.name for category in allCategories">
+                  
+                </select>
+            </div>
+            <div class="custom-text-search col-md-2 col-xs-5 col-sm-2" ng-show="sub_categories">
+                
+                <select class="select-form-controle search_sub_category"
+                        
+                        ng-model="search_sub_category"
+                        ng-options="sub_category.id as sub_category.name for sub_category in sub_categories">
+                  <option ng-value="0" ng-selected="selected">Sub-category:</option>
+                </select>
+            </div>
+        </div>
+        <br>
 <br>
 <!-- <div class="row">
     <div class="col-md-10 col-md-offset-1">

@@ -1,5 +1,4 @@
 app.controller('contactusController', function($scope,$http) {
-	
 	$scope.is_contact_us_submited = 0;
 
 	/**

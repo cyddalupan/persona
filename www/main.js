@@ -1,6 +1,12 @@
 app.controller('mainController', function($scope,$cookies,$location,$timeout,$http) {
 	
-	$scope.s_url = api_url;
+	//check if local host to know what api to connect
+	if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
+		$scope.s_url = 'http://localhost/persona_api/public/';
+	}else{
+		$scope.s_url = 'http://web.haynaku.shop/haynaku_api/public/';
+	}
+
 	$scope.mobile_page_show = 1;
 	$scope.notification_count = 0
 	//checklogin

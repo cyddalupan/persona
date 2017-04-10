@@ -1,12 +1,12 @@
 <ng-include src="'app/include_search/include_search.html'"></ng-include>
 
-<div class="container">    
+<div class="container home-container">    
     <div class="row">
         <div class="col-md-4 col-xs-6 col-xs-12 per-category" ng-repeat="category in allCategories">
-            <a href="#/subcategory/{{category.id}}/{{category.name}}" ng-click="ads_type_id = 0">
+            <a ng-mouseenter="hovery = true" ng-mouseleave="hovery = false" href="#/subcategory/{{category.id}}/{{category.name}}" ng-click="ads_type_id = 0">
                 <img ng-src="{{s_url}}{{category.photo}}" id="img_category" class="img-responsive category-img" alt="Image">
                 <div class="black-fade"></div>
-                <div class="category-name">
+                <div class="category-name" ng-class="{categorynamefader: hovery}">
                     {{category.name}}
                 </div>
             </a>

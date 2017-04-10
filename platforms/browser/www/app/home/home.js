@@ -1,5 +1,4 @@
 app.controller('homeController', function($scope,$http) {
-
 	/**
 	 * Gets The categories And Show It in the Homepage
 	 */
@@ -26,6 +25,7 @@ app.controller('homeController', function($scope,$http) {
 		}
 	}
 
+	
 	//get category
 	$scope.get_category();
 });

@@ -1,5 +1,4 @@
 app.controller('my_adsController', function($scope,$http,$cookies,$location) {
-	
 	$scope.all_my_ads = '';
 
 	//checklogin

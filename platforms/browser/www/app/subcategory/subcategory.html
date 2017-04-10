@@ -1,20 +1,21 @@
-<br>
+<link href="app/subcategory/subcategory.css" rel="stylesheet">
 <ng-include src="'app/include_search/include_search.html'"></ng-include>
-<br>
 <div class="row">
-    <div class="col-md-12">
-        <ul class="nav nav-tabs">
-            <li role="presentation" ng-click="click_ads_type(0,'inside_category')" ng-class="click_ads_type_active(0)"><a>All</a></li>
-            <li role="presentation" ng-click="click_ads_type(ads_type.id,'inside_category')" ng-class="click_ads_type_active(ads_type.id)" ng-repeat="ads_type in ads_types"><a>{{ads_type.type}}</a></li>
-        </ul>
-    </div>
+  <div class="nav-enclosure">
+      <div id="navnav" class="nav-arrange">
+          <ul class="nav nav-tabs">
+              <li role="presentation" ng-click="click_ads_type(0,'inside_category')" ng-class="click_ads_type_active(0)"><a>All</a></li>
+              <li role="presentation" ng-click="click_ads_type(ads_type.id,'inside_category')" ng-class="click_ads_type_active(ads_type.id)" ng-repeat="ads_type in ads_types"><a>{{ads_type.type}}</a></li>
+          </ul>
+      </div>
+  </div>
 </div>
-<h1 class="text-center text-danger">
+<h1 class="catego-name text-center text-danger">
     {{category_name}}
 </h1>
 <hr>
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-2 subcategory-class" id="subcategory-class">
         <hr>
         <h4>Sub Category</h4>
         <ul class="nav nav-pills nav-stacked">
@@ -99,4 +100,28 @@
         <br><br>
     </div>
 </div>
-
+        <footer id="footer-category">
+            <div class="row">
+                <div class="col-xs-2 text-center footfoot">
+                        <a class="footer-filter" href="#/search/0/0/0/0/0" ng-click="CloseNav()">
+                          <strong>Filter</strong>
+                        </a>
+                </div>              
+                <div class="col-xs-4 text-center footfoot">
+                        <a  class="footer-subcategory">
+                            <strong>Subcategory</strong>
+                        </a>
+                </div>
+                <div class="col-xs-3 text-center footfoot">
+                        <a class="footer-categ-a" href="#/" ng-click="CloseNav()">
+                            <strong>Categories</strong>
+                        </a>
+                </div>
+                <div class="col-xs-3 text-center footfoot">
+                        <a class="footer-my-ads" href="#/my_ads" ng-click="CloseNav()">
+                            <strong>My Ads</strong>
+                        </a>
+                </div>
+            </div>
+        </footer>
+<link href="app/subcategory/custom_search.css" rel="stylesheet">
