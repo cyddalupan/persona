@@ -92,7 +92,6 @@ app.controller('subCategoryController', function($scope,$http,$routeParams,$time
 			$scope.ads_types = optionAdsTypes;
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
@@ -124,7 +123,6 @@ app.controller('subCategoryController', function($scope,$http,$routeParams,$time
 			$scope.sub_categories = optionSubCategory;
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
@@ -158,7 +156,6 @@ app.controller('subCategoryController', function($scope,$http,$routeParams,$time
 			$scope.pagerloader = 0;
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
@@ -188,7 +185,6 @@ app.controller('subCategoryController', function($scope,$http,$routeParams,$time
 						$scope.BigBanners[indexcount] = response.data;
 					}, function errorCallback(response) {
 						console.log(response);
-						alert("Please check connection and try again.");
 					});
 		    	}
 		    });
@@ -249,7 +245,6 @@ app.controller('subCategoryController', function($scope,$http,$routeParams,$time
 			}
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
@@ -291,7 +286,6 @@ app.controller('subCategoryController', function($scope,$http,$routeParams,$time
 			}
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 

@@ -24,8 +24,7 @@ app.controller('new_adController', function($scope,$http,$location,$routeParams,
 			$scope.get_locations();
 
 		}, function errorCallback(response) {
-			// console.log(response);
-			// alert("Please check connection and try again.");
+				console.log(response);
 		});
 	}
 
@@ -68,7 +67,6 @@ app.controller('new_adController', function($scope,$http,$location,$routeParams,
 			}
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
@@ -94,7 +92,6 @@ app.controller('new_adController', function($scope,$http,$location,$routeParams,
 				$scope.get_category();
 			}, function errorCallback(response) {
 				console.log(response);
-				alert("Please check connection and try again.");
 			});
 		}
 	}
@@ -153,7 +150,6 @@ app.controller('new_adController', function($scope,$http,$location,$routeParams,
 			$scope.sub_categories = optionSubCategory;
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
@@ -179,7 +175,6 @@ app.controller('new_adController', function($scope,$http,$location,$routeParams,
 			$scope.ads_types = optionAdsTypes;
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
@@ -244,7 +239,6 @@ app.controller('new_adController', function($scope,$http,$location,$routeParams,
 			}
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
     }
 
@@ -267,7 +261,6 @@ app.controller('new_adController', function($scope,$http,$location,$routeParams,
 			$scope.get_gallery($scope.unfinishedAdId);
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
     }
 
@@ -291,7 +284,6 @@ app.controller('new_adController', function($scope,$http,$location,$routeParams,
 			$scope.get_gallery_single(gallery_id);
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
     }
 
@@ -326,7 +318,6 @@ app.controller('new_adController', function($scope,$http,$location,$routeParams,
 			$scope.featured_gallery.path = '';
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 

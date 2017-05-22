@@ -25,8 +25,7 @@ app.controller('adsSingleController', function($scope,$http,$routeParams,$cookie
 			$scope.updateComment(ads_id);
 
 		}, function errorCallback(response) {
-			// console.log(response);
-			// alert("Please check connection and try again.");
+				console.log(response);
 		});
 	}
 
@@ -50,7 +49,6 @@ app.controller('adsSingleController', function($scope,$http,$routeParams,$cookie
 			}
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
     }
 
@@ -90,7 +88,6 @@ app.controller('adsSingleController', function($scope,$http,$routeParams,$cookie
 
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 		this.comment = "";
 	}
@@ -107,7 +104,6 @@ app.controller('adsSingleController', function($scope,$http,$routeParams,$cookie
 			$scope.Comments = response.data;
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
