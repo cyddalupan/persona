@@ -26,7 +26,6 @@ app.controller('registerController', function($scope,$http,$location) {
 				}
 			}, function errorCallback(response) {
 				console.log(response);
-				alert("Please check connection and try again.");
 			});
 		}
 		 else {

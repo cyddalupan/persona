@@ -30,7 +30,6 @@ app.controller('loginController', function($scope,$http,$cookies,$location) {
 			}
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
@@ -54,7 +53,6 @@ app.controller('loginController', function($scope,$http,$cookies,$location) {
 			}
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
     }
 

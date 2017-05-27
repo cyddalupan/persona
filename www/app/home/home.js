@@ -4,8 +4,6 @@ app.controller('homeController', function($scope,$http) {
 	 */
 	$scope.get_category = function()
 	{
-		if(angular.isUndefined($scope.allCategories))
-		{
 			$http({
 				method: 'GET',
 				url: $scope.s_url+'all-category'
@@ -22,7 +20,6 @@ app.controller('homeController', function($scope,$http) {
 			}, function errorCallback(response) {
 				console.log(response);
 			});
-		}
 	}
 
 	

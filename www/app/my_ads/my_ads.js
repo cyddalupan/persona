@@ -52,7 +52,6 @@ app.controller('my_adsController', function($scope,$http,$cookies,$location) {
 			
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
     }
 
@@ -70,7 +69,6 @@ app.controller('my_adsController', function($scope,$http,$cookies,$location) {
 			
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
     }
 
@@ -101,7 +99,6 @@ app.controller('my_adsController', function($scope,$http,$cookies,$location) {
 				$scope.getMyAds();
 			}, function errorCallback(response) {
 				console.log(response);
-				alert("Please check connection and try again.");
 			});
 		}
 	}
@@ -130,7 +127,6 @@ app.controller('my_adsController', function($scope,$http,$cookies,$location) {
 				}
 			}, function errorCallback(response) {
 				console.log(response);
-				alert("Please check connection and try again.");
 			});
     	}
     	else

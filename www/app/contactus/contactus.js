@@ -21,7 +21,6 @@ app.controller('contactusController', function($scope,$http) {
 				$scope.is_contact_us_submited = 1;
 			}, function errorCallback(response) {
 				console.log(response);
-				alert("Please check connection and try again.");
 			});
 		}else {
 			console.log('invalid form');

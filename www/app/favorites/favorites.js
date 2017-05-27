@@ -28,7 +28,6 @@ app.controller('favoritesController', function($scope,$http,$cookies,$location) 
 			location.reload();
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
@@ -44,7 +43,6 @@ app.controller('favoritesController', function($scope,$http,$cookies,$location) 
 				$scope.my_favorites = response.data;
 			}, function errorCallback(response) {
 				console.log(response);
-				alert("Please check connection and try again.");
 			});
 		}
 	}

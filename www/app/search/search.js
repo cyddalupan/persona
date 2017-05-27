@@ -29,7 +29,7 @@ app.controller('searchController', function($scope,$http,$routeParams,$location)
 				$scope.get_category();
 			}, function errorCallback(response) {
 				console.log(response);
-				alert("Please check connection and try again.");
+				
 			});
 		}
 	}
@@ -95,7 +95,6 @@ app.controller('searchController', function($scope,$http,$routeParams,$location)
 			$scope.get_locations();
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
@@ -133,7 +132,6 @@ app.controller('searchController', function($scope,$http,$routeParams,$location)
 			$scope.sub_categories = optionSubCategory;
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
@@ -159,7 +157,6 @@ app.controller('searchController', function($scope,$http,$routeParams,$location)
 			$scope.ads_types = optionAdsTypes;
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
@@ -198,7 +195,6 @@ app.controller('searchController', function($scope,$http,$routeParams,$location)
 			}
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
@@ -239,7 +235,6 @@ app.controller('searchController', function($scope,$http,$routeParams,$location)
 			}
 		}, function errorCallback(response) {
 			console.log(response);
-			alert("Please check connection and try again.");
 		});
 	}
 
