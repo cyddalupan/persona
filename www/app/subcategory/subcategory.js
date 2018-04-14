@@ -102,7 +102,7 @@ app.controller('subCategoryController', function($scope,$http,$routeParams,$time
 	$scope.get_sub_category = function(category){
 
 		//get ads type
-		if(!angular.isUndefined(category) && category != 0)
+		if(!angular.isUndefined(category) && category !== 0)
 		{
 			$scope.get_ads_type(category);
 		}
@@ -149,9 +149,9 @@ app.controller('subCategoryController', function($scope,$http,$routeParams,$time
 			method: 'GET',
 			url: $scope.s_url+'get-ads/'+category_id+'/'+$scope.ads_type_id+'/'+$scope.selected_sidebar_sub_category
 		}).then(function successCallback(response) {
-			if (response.data.data.length == 0) {
+			if (response.data.data.length === 0) {
 				$scope.no_ads_result = 1;
-			};
+			}
 			$scope.allAds = response.data.data;
 			$scope.pagerloader = 0;
 		}, function errorCallback(response) {
@@ -213,7 +213,7 @@ app.controller('subCategoryController', function($scope,$http,$routeParams,$time
 	 */
 	$scope.IfShowFavoriteBot = function(product_id){
 		if(
-			$scope.user_id != 0 &&
+			$scope.user_id !== 0 &&
 			$.inArray(product_id,$scope.usersFavoriteProducts) < 0
 		){
 			return 1;

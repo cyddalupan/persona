@@ -1,5 +1,7 @@
 /node_modules
 /bower_components
+/haynaku_api
+/dev
 */.DS_Store
 *.DS_Store
 .DS_Store
